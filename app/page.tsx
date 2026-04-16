@@ -175,8 +175,8 @@ export default function CvrcleFinal() {
       <footer className="relative z-10 py-12 px-6 md:px-24 text-[10px] uppercase tracking-[0.5em] opacity-30 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/5">
         <span>CVRCLE — 2026</span>
         <div className="flex gap-10">
-          <a href="https://www.instagram.com/cvrcle_collective/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6D4A1] transition cursor-pointer">Instagram</a>
-          <a href="mailto:direction-cvrcle.collective@hotmzil.com" className="hover:text-[#D6D4A1] transition">Contact</a>
+          <a href="https://www.instagram.com/cvrcle.collective/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6D4A1] transition cursor-pointer">Instagram</a>
+          <a href="mailto:hello@cvrcle.com" className="hover:text-[#D6D4A1] transition">Contact</a>
         </div>
       </footer>
     </main>
