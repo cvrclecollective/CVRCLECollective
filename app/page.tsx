@@ -27,7 +27,6 @@ export default function CvrcleFinal() {
     { id: "02", title: "Art Under The Rainbow", description: "Workshop archive — Avril 2025.", artist: "Collective", type: "Community Workshop" }
   ];
 
-  // Floating background canvas logic
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -88,7 +87,7 @@ export default function CvrcleFinal() {
         </div>
       </section>
 
-      {/* ARCHIVES & TRACES - SMALLER GALLERY */}
+      {/* ARCHIVES & TRACES */}
       <section className="relative z-10 py-24 px-6 md:px-24 border-t border-white/5">
         <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-16">Archives & Traces</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 max-w-5xl mx-auto">
@@ -158,7 +157,7 @@ export default function CvrcleFinal() {
         </div>
       </section>
 
-      {/* MODAL POPUP FOR FRAGMENTS */}
+      {/* MODAL POPUP */}
       {activeFragment && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" onClick={() => setActiveFragment(null)}>
           <div className="max-w-2xl w-full bg-[#080808] border border-white/10 p-12 text-center" onClick={(e) => e.stopPropagation()}>
@@ -175,8 +174,8 @@ export default function CvrcleFinal() {
       <footer className="relative z-10 py-12 px-6 md:px-24 text-[10px] uppercase tracking-[0.5em] opacity-30 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/5">
         <span>CVRCLE — 2026</span>
         <div className="flex gap-10">
-          <a href="https://www.instagram.com/cvrcle_collective/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6D4A1] transition cursor-pointer">Instagram</a>
-          <a href="mailto:direction-cvrcle.collective@hotmzil.com" className="hover:text-[#D6D4A1] transition">Contact</a>
+          <a href="https://www.instagram.com/cvrcle.collective/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D6D4A1] transition cursor-pointer">Instagram</a>
+          <a href="mailto:hello@cvrcle.com" className="hover:text-[#D6D4A1] transition">Contact</a>
         </div>
       </footer>
     </main>
