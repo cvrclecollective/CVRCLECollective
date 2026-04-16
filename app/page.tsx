@@ -103,30 +103,34 @@ export default function CvrcleFinal() {
           <p className="text-sm tracking-[0.3em] opacity-60 uppercase">Beyond borders. Between forms.</p>
         </section>
 
-        {/* MANIFESTO */}
+        {/* MANIFESTO - FIXED QUOTES */}
         <section className="py-32 px-6 md:px-24 border-t border-white/5 text-center flex flex-col items-center">
           <p className="max-w-4xl text-2xl md:text-4xl font-serif italic leading-snug">
-            "We are the black sheep not by exclusion, but by choice. We transform the weight of pain into the fluidity of language, creating sanctuaries where the overlooked becomes visible."
+            &quot;We are the black sheep not by exclusion, but by choice. We transform the weight of pain into the fluidity of language, creating sanctuaries where the overlooked becomes visible.&quot;
           </p>
         </section>
 
-        {/* ARCHIVES & TRACES */}
+        {/* ARCHIVES & TRACES - UPDATED TO .PNG */}
         <section className="py-40 px-6 md:px-24 border-t border-white/5">
           <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-24">Archives & Traces</h2>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-7 group">
               <div className="overflow-hidden bg-zinc-900 aspect-[4/5] mb-6">
-                <img src="/sonogravure.jpg" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 transition-opacity" alt="Sonogravure" />
+                <img src="/sonogravure.png" className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 transition-opacity" alt="Sonogravure" />
               </div>
               <p className="font-serif italic text-xl">Sonogravure — Anna Rexha</p>
             </div>
             <div className="md:col-span-5 space-y-24">
               <div className="group">
                 <div className="overflow-hidden bg-zinc-900 aspect-square mb-6">
-                  <img src="/workshop.jpg" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all" alt="Workshop" />
+                  <img src="/workshop.png" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all" alt="Workshop" />
                 </div>
                 <p className="font-serif italic">Art workshop : Art Under The Rainbow</p>
                 <p className="text-[10px] uppercase tracking-widest opacity-40 mt-2">Avril, 2025</p>
+              </div>
+              {/* BUTTERFLY TRACE */}
+              <div className="group flex justify-center pt-12">
+                 <img src="/butterfly.png" className="w-32 h-32 object-contain opacity-40 hover:opacity-100 transition-opacity duration-1000 animate-pulse" alt="Butterfly Trace" />
               </div>
             </div>
           </div>
@@ -168,7 +172,7 @@ export default function CvrcleFinal() {
           </div>
         </section>
 
-        {/* PAST PROJECTS */}
+        {/* PROJECTS */}
         <section className="py-40 px-6 md:px-24 border-t border-white/5 bg-white/[0.01]">
           <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-24">Past Projects</h2>
           <div className="space-y-12">
@@ -187,44 +191,19 @@ export default function CvrcleFinal() {
               </div>
               <h4 className="text-3xl md:text-5xl font-serif mb-6 opacity-90">Role Models</h4>
               <p className="text-lg opacity-70 max-w-2xl font-serif italic leading-relaxed">
-                In partnership with BLOM ASBL & the European EPBN WISE initiative.
+                In partnership with BLOM ASBL &amp; the European EPBN WISE initiative.
               </p>
             </div>
-            <div className="group border border-white/10 p-8 md:p-12 hover:border-white/20 transition-all duration-700 bg-black/40">
-              <div className="flex justify-between items-start mb-8">
-                <span className="text-[9px] uppercase tracking-widest opacity-40">Archive</span>
-                <span className="text-[10px] opacity-40 font-mono">METZ, FRANCE</span>
-              </div>
-              <h4 className="text-3xl md:text-5xl font-serif mb-4 italic opacity-70">Essais Dynamiques</h4>
-              <p className="text-lg opacity-60 max-w-2xl font-serif mb-6">Installation exhibited at Galerie 0.15.</p>
-            </div>
           </div>
         </section>
 
-        {/* PRESS SECTION - NEWLY ADDED */}
+        {/* PRESS */}
         <section className="py-40 px-6 md:px-24 border-t border-white/5">
-          <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-16">Press & Recognition</h2>
+          <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-16">Press &amp; Recognition</h2>
           <div className="flex flex-wrap gap-x-16 gap-y-8 items-center">
-            <span className="text-2xl md:text-4xl font-serif italic opacity-60 hover:opacity-100 transition-opacity">Tageblatt</span>
-            <span className="text-2xl md:text-4xl font-serif italic opacity-60 hover:opacity-100 transition-opacity">RTL Luxembourg</span>
-            <span className="text-2xl md:text-4xl font-serif italic opacity-60 hover:opacity-100 transition-opacity">Woxx</span>
-          </div>
-        </section>
-
-        {/* UPCOMING */}
-        <section className="py-40 px-6 md:px-24 border-t border-white/5 bg-white/[0.01]">
-          <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-24">Upcoming</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-             <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
-                <p className="text-[9px] uppercase tracking-widest opacity-40 mb-2">May 2026</p>
-                <h5 className="text-2xl font-serif mb-4">Space & Identity</h5>
-                <p className="text-sm opacity-60 font-serif italic">Exhibition series exploring the Black Sheep philosophy.</p>
-             </div>
-             <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
-                <p className="text-[9px] uppercase tracking-widest opacity-40 mb-2">Summer 2026</p>
-                <h5 className="text-2xl font-serif mb-4">Collective Sanctuary</h5>
-                <p className="text-sm opacity-60 font-serif italic">Textile residency focused on oral archives.</p>
-             </div>
+            <span className="text-2xl md:text-4xl font-serif italic opacity-60">Tageblatt</span>
+            <span className="text-2xl md:text-4xl font-serif italic opacity-60">RTL Luxembourg</span>
+            <span className="text-2xl md:text-4xl font-serif italic opacity-60">Woxx</span>
           </div>
         </section>
 
