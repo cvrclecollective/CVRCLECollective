@@ -5,8 +5,14 @@ import { useEffect, useRef, useState } from "react";
 export default function CvrcleFinal() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [activeFragment, setActiveFragment] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -49,7 +55,17 @@ export default function CvrcleFinal() {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [mounted]);
+
+  const taglines = [
+    "Beyond borders. Between forms.",
+    "Iwwer d’Grenzen eraus. Tëscht de Formen.",
+    "Au-delà des frontières. Entre les formes.",
+    "Përtej kufijve. Ndërmjet formave.",
+    "Արտաքս սահմաններից։ Ձևերի միջև։",
+    "超越边界。形之间。",
+    "Поза межами. Між формами."
+  ];
 
   const members = [
     {
@@ -81,13 +97,15 @@ export default function CvrcleFinal() {
   const fragmentContent: Record<string, { title: string, text: string }> = {
     'Archivartiste': {
       title: 'Fragments: Archivartiste',
-      text: 'The artist as a collector of living archives. We do not look for history in books, but in the voices and stories shared directly by people. These oral archives are the raw material of our resistance.'
+      text: 'The artist as a collector of living archives. We do not look for history in books, but in the voices and stories shared directly by people.'
     },
     'Storytelling': { title: 'Fragments: Storytelling', text: 'The art of weaving narratives between borders.' },
     'Poetry': { title: 'Fragments: Poetry', text: 'Excerpts from the upcoming book and thesis.' },
     'Sunday Studies': { title: 'Sunday Studies', text: 'Chalk on concrete. Every Sunday, we return to the basics.' },
     'Articles': { title: 'Fragments: Articles', text: 'Long-form reflections on artivism and identity.' }
   };
+
+  if (!mounted) return <div className="bg-[#050505] min-h-screen" />;
 
   return (
     <main className="relative min-h-screen font-light selection:bg-[#D6D4A1] selection:text-black bg-[#050505] text-[#D6D4A1]">
@@ -100,13 +118,16 @@ export default function CvrcleFinal() {
           <div className="w-72 h-72 md:w-96 md:h-96 rounded-full border flex items-center justify-center mb-16 animate-[pulse_5s_infinite] border-[#D6D4A1]/20">
             <h1 className="text-5xl md:text-7xl tracking-[0.4em] font-serif font-light translate-x-3">CVRCLE</h1>
           </div>
-          <p className="text-sm tracking-[0.3em] opacity-60 uppercase">Beyond borders. Between forms.</p>
+          <div className="space-y-2">
+            {taglines.map((line, i) => (
+              <p key={i} className="text-[10px] md:text-xs tracking-[0.3em] opacity-60 uppercase font-light">
+                {line}
+              </p>
+            ))}
+          </div>
         </section>
 
-
-        
-
-        {/* 4. THEORETICAL FRAGMENTS (Interactive Buttons) */}
+        {/* 2. THEORETICAL FRAGMENTS */}
         <section className="py-40 px-6 md:px-24 border-t border-white/5 bg-white/[0.01]">
           <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-24 text-center">Theoretical Fragments</h2>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-px bg-white/10 border border-white/10">
@@ -119,7 +140,44 @@ export default function CvrcleFinal() {
           </div>
         </section>
 
-        {/* 5. THE COLLECTIVE */}
+        {/* JOURNAL & PRESS MENTIONS */}
+        <section className="py-40 px-6 md:px-24 border-t border-white/5 bg-white/[0.01]">
+          <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-24">Journal & Press Mentions</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 max-w-6xl">
+            <div className="bg-white/[0.02] p-12 border border-white/5 flex flex-col justify-center">
+              <h4 className="text-[10px] uppercase tracking-widest mb-12 opacity-40 italic font-light">Featured Reflections</h4>
+              <div className="space-y-16">
+                <p className="text-2xl md:text-3xl font-serif italic opacity-70 hover:opacity-100 transition-opacity leading-relaxed">
+                  &ldquo;An ephemeral approach to permanence.&rdquo;
+                </p>
+                <p className="text-2xl md:text-3xl font-serif italic opacity-70 hover:opacity-100 transition-opacity leading-relaxed">
+                  &ldquo;Redefining the circle as a space of inclusion.&rdquo;
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center space-y-12">
+               <div className="space-y-2">
+                 <p className="text-[9px] uppercase tracking-[0.4em] opacity-30 mb-6">As seen in</p>
+                 <div className="grid grid-cols-1 gap-8">
+                   <div className="border-l border-[#D6D4A1] pl-6 py-2">
+                     <span className="text-2xl tracking-[0.3em] font-light opacity-80 uppercase">RTL</span>
+                   </div>
+                   <div className="border-l border-white/10 pl-6 py-2">
+                     <span className="text-2xl tracking-[0.3em] font-light opacity-80 uppercase">WOXX</span>
+                   </div>
+                   <div className="border-l border-white/10 pl-6 py-2">
+                     <span className="text-2xl tracking-[0.3em] font-light opacity-80 uppercase">TAGEBLATT</span>
+                   </div>
+                 </div>
+               </div>
+               <p className="text-[10px] uppercase tracking-[0.5em] opacity-30 italic pt-8">
+                 Tracing cultural narratives across Luxembourg.
+               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. THE COLLECTIVE */}
         <section className="py-40 px-6 md:px-24 border-t border-white/5">
           <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-32">The Collective</h2>
           <div className="space-y-48">
@@ -135,14 +193,14 @@ export default function CvrcleFinal() {
                     <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 italic">{artist.role}</p>
                   </div>
                   <p className="max-w-xl text-lg md:text-xl leading-relaxed opacity-70 font-serif italic py-4 border-y border-white/5">{artist.bio}</p>
-                  <a href={artist.insta} target="_blank" className="inline-block text-[10px] uppercase tracking-[0.5em] border-b border-white/20 pb-2 hover:border-white transition-all z-[70] relative">Instagram</a>
+                  <a href={artist.insta} target="_blank" rel="noopener noreferrer" className="inline-block text-[10px] uppercase tracking-[0.5em] border-b border-white/20 pb-2 hover:border-white transition-all z-[70] relative">Instagram</a>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* 6. PAST PROJECTS (With restricted EU credit) */}
+        {/* 4. PAST PROJECTS */}
         <section className="py-40 px-6 md:px-24 border-t border-white/5 bg-white/[0.01]">
           <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-24">Past Projects</h2>
           <div className="space-y-12">
@@ -161,7 +219,7 @@ export default function CvrcleFinal() {
               </div>
               <h4 className="text-3xl md:text-5xl font-serif mb-6 opacity-90">Role Models</h4>
               <p className="text-lg opacity-70 max-w-2xl font-serif italic mb-8 leading-relaxed">
-                In partnership with <span className="text-white font-normal">BLOM ASBL</span> & the <span className="text-white font-normal">European EPBN WISE initiative</span>. 
+                In partnership with BLOM ASBL & the European EPBN WISE initiative. 
                 A project celebrating LGBTQIA+ visibility as a form of cultural strength.
               </p>
             </div>
@@ -176,14 +234,14 @@ export default function CvrcleFinal() {
           </div>
         </section>
 
-        {/* 7. UPCOMING */}
+        {/* 5. UPCOMING */}
         <section className="py-40 px-6 md:px-24 border-t border-white/5">
           <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-40 mb-24">Upcoming</h2>
           <div className="grid md:grid-cols-2 gap-8">
              <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
                 <p className="text-[9px] uppercase tracking-widest opacity-40 mb-2">May 2026</p>
                 <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Space & Identity</h5>
-                <p className="text-sm opacity-60 font-serif italic leading-relaxed">New installation series exploring the "Black Sheep" in urban environments.</p>
+                <p className="text-sm opacity-60 font-serif italic leading-relaxed">New installation series exploring the &ldquo;Black Sheep&rdquo; in urban environments.</p>
              </div>
              <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
                 <p className="text-[9px] uppercase tracking-widest opacity-40 mb-2">Summer 2026</p>
@@ -193,17 +251,16 @@ export default function CvrcleFinal() {
           </div>
         </section>
 
-        {/* 8. FOOTER */}
+        {/* 6. FOOTER */}
         <footer className="py-12 px-6 md:px-24 text-[10px] uppercase tracking-[0.5em] opacity-30 flex justify-between items-center border-t border-white/5 bg-black">
           <span>CVRCLE — 2026</span>
           <div className="flex gap-10">
-            <a href="https://www.instagram.com/cvrcle.collective/" target="_blank" className="hover:text-white transition z-[70] relative">Instagram</a>
+            <a href="https://www.instagram.com/cvrcle.collective/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition z-[70] relative">Instagram</a>
             <a href="mailto:hello@cvrcle.com" className="hover:text-white transition z-[70] relative">Contact</a>
           </div>
         </footer>
       </div>
 
-      {/* MODAL */}
       {activeFragment && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={() => setActiveFragment(null)}></div>
