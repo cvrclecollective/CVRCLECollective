@@ -87,7 +87,7 @@ export default function CvrcleFinal() {
       title: `Vice présidente & Cheffe de projet & Chargée de communication`,
       role: `Vloggeuse et poétesse`,
       bio: `Créatrice chinoise, diplômée en gestion de projets culturels, chargée de coordination, d’administration et de production au sein du collectif.`,
-      projects: [
+      project`s: [
         { title: `4SEASONS Strategy`, desc: `Developing the permanent framework for cyclic artistic interventions.` },
         { title: `Zine Archives`, desc: `Managing the transformation of workshop outcomes into digital narratives.` }
       ],
@@ -97,7 +97,7 @@ export default function CvrcleFinal() {
     {
       name: `Ani NIKOGOSYAN`,
       title: `Directrice artistique`,
-      role: `Artiste pluridisciplinaire`,
+      role: Artiste pluridisciplinaire`,
       bio: `Artiste franco‑arménienne travaillant avec le textile, le fil et le vêtement comme médiums de mémoire, de soin et de résistance.`,
       projects: [
         { title: `Essais Dynamiques`, desc: `Installation showcased at Galerie 0.15, Metz. A study of motion and displacement.` },
@@ -110,23 +110,23 @@ export default function CvrcleFinal() {
   ];
 
   const fragmentContent: Record<string, { title: string, text: string }> = {
-    'Archivartiste': {
+    `Archivartiste`: {
       title: `Fragments: Archivartiste`,
       text: `The artist as a collector of living archives. We do not look for history in books, but in the voices and stories shared directly by people.`
     },
-    'Storytelling': { 
+    `Storytelling`: { 
       title: `Fragments: Storytelling`, 
       text: `The art of weaving narratives between borders.` 
     },
-    'Poetry': { 
+    `Poetry`: { 
       title: `Fragments: Poetry`, 
       text: `Excerpts from the upcoming book and thesis.` 
     },
-    'Sunday Studies': { 
+    `Sunday Studies`: { 
       title: `Sunday Studies`, 
       text: `Chalk on concrete. Every Sunday, we return to the basics.` 
     },
-    'Articles': { 
+    `Articles`: { 
       title: `Fragments: Articles`, 
       text: `Long-form reflections on artivism and identity.` 
     }
@@ -230,7 +230,7 @@ export default function CvrcleFinal() {
 <div className="md:col-span-5 aspect-[3/4] overflow-hidden border border-[#D6D4A1]/20">
   <img 
     src="/springposter.png" 
-    alt=`4SEASONS Spring Workshop Poster` 
+    alt=4SEASONS Spring Workshop Poster
     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
   />
 </div>
@@ -241,7 +241,7 @@ export default function CvrcleFinal() {
       </div>
       
       <h4 className="text-4xl md:text-6xl font-serif italic group-hover:text-white transition-colors">
-  {`Transforming Anger / The Inner Child's Voice`}
+  {`Transforming Anger / The Inner Child&apos;s Voice`}
 </h4>
       
       <div className="space-y-2 font-serif text-xl opacity-90">
@@ -295,7 +295,7 @@ export default function CvrcleFinal() {
     {`As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived.`}
   </p>
   <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-    {`Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, 'Each trophy combines a solid structure with a textile component... '`}
+    {`Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, Each trophy combines a solid structure with a textile component...`}
   </p>
 </div>
             </div>
@@ -468,7 +468,7 @@ export default function CvrcleFinal() {
           <div className="space-y-10">
             <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4">Sensory Stations</h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {['Sound: Childhood ambient triggers', 'Touch: Sandpaper & Ice cubes', 'Smell: Alcohol & Incense ash', 'Movement: Forceful repetition'].map(item => (
+              {[`Sound: Childhood ambient triggers`, `Touch: Sandpaper & Ice cubes`, `Smell: Alcohol & Incense ash`, `Movement: Forceful repetition`].map(item => (
                 <div key={item} className="p-6 bg-white/[0.03] border border-white/5 font-serif italic text-lg opacity-85">
                   {item}
                 </div>
