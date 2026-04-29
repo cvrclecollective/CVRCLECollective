@@ -401,8 +401,10 @@ export default function CvrcleFinal() {
              <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
                 <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">May 2026</p>
                 <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Space & Identity</h5>
-                <p className="text-sm opacity-90 font-serif italic leading-relaxed">{`New installation series exploring the "Black Sheep" in urban environments.`}</p>
-             </div>
+                <p className="text-sm opacity-90 font-serif italic leading-relaxed">
+  {`New installation series exploring the "Black Sheep" in urban environments.`}
+</p>
+</div>
              <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
                 <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">Summer 2026</p>
                 <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Collective Sanctuary</h5>
