@@ -111,13 +111,25 @@ export default function CvrcleFinal() {
 
   const fragmentContent: Record<string, { title: string, text: string }> = {
     'Archivartiste': {
-      title: 'Fragments: Archivartiste',
-      text: 'The artist as a collector of living archives. We do not look for history in books, but in the voices and stories shared directly by people.'
+      title: `Fragments: Archivartiste`,
+      text: `The artist as a collector of living archives. We do not look for history in books, but in the voices and stories shared directly by people.`
     },
-    'Storytelling': { title: 'Fragments: Storytelling', text: 'The art of weaving narratives between borders.' },
-    'Poetry': { title: 'Fragments: Poetry', text: 'Excerpts from the upcoming book and thesis.' },
-    'Sunday Studies': { title: 'Sunday Studies', text: 'Chalk on concrete. Every Sunday, we return to the basics.' },
-    'Articles': { title: 'Fragments: Articles', text: 'Long-form reflections on artivism and identity.' }
+    'Storytelling': { 
+      title: `Fragments: Storytelling`, 
+      text: `The art of weaving narratives between borders.` 
+    },
+    'Poetry': { 
+      title: `Fragments: Poetry`, 
+      text: `Excerpts from the upcoming book and thesis.` 
+    },
+    'Sunday Studies': { 
+      title: `Sunday Studies`, 
+      text: `Chalk on concrete. Every Sunday, we return to the basics.` 
+    },
+    'Articles': { 
+      title: `Fragments: Articles`, 
+      text: `Long-form reflections on artivism and identity.` 
+    }
   };
 
   const pressMentions = [
@@ -228,7 +240,9 @@ export default function CvrcleFinal() {
         <span className="px-3 py-1 border border-[#D6D4A1]/40 text-[9px] uppercase tracking-widest rounded-full">Active Cycle: Spring 2026</span>
       </div>
       
-      <h4 className="text-4xl md:text-6xl font-serif italic group-hover:text-white transition-colors">Transforming Anger / The Inner Child’s Voice</h4>
+      <h4 className="text-4xl md:text-6xl font-serif italic group-hover:text-white transition-colors">
+  {`Transforming Anger / The Inner Child's Voice`}
+</h4>
       
       <div className="space-y-2 font-serif text-xl opacity-90">
         <p className="tracking-wide">RAINBOW CENTER</p>
@@ -237,8 +251,8 @@ export default function CvrcleFinal() {
       </div>
 
       <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">
-        "A space where anger is expressed, torn apart, and artistically recomposed — transforming emotional rupture into creative renewal."
-      </p>
+  {`"A space where anger is expressed, torn apart, and artistically recomposed — transforming emotional rupture into creative renewal."`}
+</p>
       <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">
         Facilitated by: Anna Rexha. 
         </p>
@@ -277,12 +291,12 @@ export default function CvrcleFinal() {
             <div className="bg-white/[0.02] p-12 border border-white/5 flex flex-col justify-center">
               <h4 className="text-[10px] uppercase tracking-widest mb-12 opacity-95 italic font-light">Featured Reflections</h4>
               <div className="space-y-16">
-                <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-                  &ldquo;As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived.&rdquo;
-                </p>
-                <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-                  &ldquo;Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, "Each trophy combines a solid structure with a textile component: the textile's fragility representing the societal challenges and marginalisation faced by LGBTQIA+ identities, and how these identities are often questioned or pushed to the margins."&rdquo;
-                </p>
+              <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
+  {`"As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived."`}
+</p>
+<p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
+  {`"Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, 'Each trophy combines a solid structure with a textile component: the textile's fragility representing the societal challenges...'"`}
+</p>
               </div>
             </div>
             <div className="flex flex-col justify-center space-y-12">
@@ -387,7 +401,7 @@ export default function CvrcleFinal() {
              <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
                 <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">May 2026</p>
                 <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Space & Identity</h5>
-                <p className="text-sm opacity-90 font-serif italic leading-relaxed">New installation series exploring the &ldquo;Black Sheep&rdquo; in urban environments.</p>
+                <p className="text-sm opacity-90 font-serif italic leading-relaxed">{`New installation series exploring the "Black Sheep" in urban environments.`}</p>
              </div>
              <div className="p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
                 <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">Summer 2026</p>
@@ -444,7 +458,9 @@ export default function CvrcleFinal() {
         <div className="space-y-16">
           <div className="space-y-6">
             <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4">The Methodology</h5>
-            <p className="opacity-70 font-serif text-lg leading-relaxed">Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. A participatory experiment on "unfinished actions."</p>
+            <p className="opacity-70 font-serif text-lg leading-relaxed">
+  {`Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. A participatory experiment on "unfinished actions."`}
+</p>
           </div>
 
           <div className="space-y-10">
