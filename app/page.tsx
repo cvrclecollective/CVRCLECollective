@@ -291,13 +291,13 @@ export default function CvrcleFinal() {
             <div className="bg-white/[0.02] p-12 border border-white/5 flex flex-col justify-center">
               <h4 className="text-[10px] uppercase tracking-widest mb-12 opacity-95 italic font-light">Featured Reflections</h4>
               <div className="space-y-16">
-              <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-  {`"As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived."`}
-</p>
-<p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-  {`"Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, 'Each trophy combines a solid structure with a textile component: the textile's fragility representing the societal challenges...'"`}
-</p>
-              </div>
+  <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
+    {`"As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived."`}
+  </p>
+  <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
+    {`"Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, 'Each trophy combines a solid structure with a textile component... '"`}
+  </p>
+</div>
             </div>
             <div className="flex flex-col justify-center space-y-12">
                <div className="space-y-2">
@@ -511,7 +511,9 @@ export default function CvrcleFinal() {
           
           <div className="space-y-6">
              <h5 className="text-[11px] uppercase tracking-[0.4em] opacity-50 border-b border-white/5 pb-2">Full Biography</h5>
-             <p className="text-xl font-serif leading-relaxed italic opacity-90">{activeMember.bio} Her practice serves as a bridge between intimate memory and collective activism.</p>
+             <p className="text-xl font-serif leading-relaxed italic opacity-90">
+  {`${activeMember.bio} Her practice serves as a bridge between intimate memory and collective activism.`}
+</p>
           </div>
 
           <div className="space-y-8">
