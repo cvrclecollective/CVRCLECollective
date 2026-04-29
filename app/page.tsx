@@ -60,49 +60,49 @@ export default function CvrcleFinal() {
   }, [mounted]);
 
   const taglines = [
-    "Beyond borders. Between forms.",
-    "Iwwer d’Grenzen eraus. Tëscht de Formen.",
-    "Au-delà des frontières. Entre les formes.",
-    "Përtej kufijve. Ndërmjet formave.",
-    "Արտաքս սահմաններից։ Ձևերի միջև։",
-    "超越边界。形之间。",
-    "Поза межами. Між формами."
+    ``Beyond borders. Between forms.``,
+    ``Iwwer d’Grenzen eraus. Tëscht de Formen.``,
+    ``Au-delà des frontières. Entre les formes.``,
+    ``Përtej kufijve. Ndërmjet formave.``,
+    ``Արտաքս սահմաններից։ Ձևերի միջև։``,
+    ``超越边界。形之间。``,
+    ``Поза межами. Між формами.``
   ];
 
   const members = [
     {
-      name: "Anna REXHA",
-      title: "Présidente & Directrice artistique",
-      role: "Artiste pluridisciplinaire",
-      bio: "Artiste vidéaste et artiviste originaire du Kosovo/Luxembourg dont la pratique artistique s’articule autour de l’image animée, du son et de l’identité plurielle.",
+      name: ``Anna REXHA``,
+      title: ``Présidente & Directrice artistique``,
+      role: ``Artiste pluridisciplinaire``,
+      bio: ``Artiste vidéaste et artiviste originaire du Kosovo/Luxembourg dont la pratique artistique s’articule autour de l’image animée, du son et de l’identité plurielle.``,
       projects: [
-        { title: "Essais Dynamiques", desc: "Installation showcased at Galerie 0.15, Metz. A study of motion and displacement." },
-        { title: "Memory Pocket of Smiles", desc: "Textile workshop series exploring cherished memories on tissue." },
+        { title: ``Essais Dynamiques``, desc: ``Installation showcased at Galerie 0.15, Metz. A study of motion and displacement.`` },
+        { title: ``Memory Pocket of Smiles``, desc: ``Textile workshop series exploring cherished memories on tissue.`` },
       ],
       insta: "https://www.instagram.com/arts_anna.rexha/",
       img: "/anna.jpg" 
     },
     {
-      name: "Shulin XIA",
-      title: "Vice présidente & Cheffe de projet & Chargée de communication",
-      role: "Vloggeuse et poétesse",
-      bio: "Créatrice chinoise, diplômée en gestion de projets culturels, chargée de coordination, d’administration et de production au sein du collectif.",
+      name: ``Shulin XIA``,
+      title: ``Vice présidente & Cheffe de projet & Chargée de communication``,
+      role: ``Vloggeuse et poétesse``,
+      bio: ``Créatrice chinoise, diplômée en gestion de projets culturels, chargée de coordination, d’administration et de production au sein du collectif.``,
       projects: [
-        { title: "4SEASONS Strategy", desc: "Developing the permanent framework for cyclic artistic interventions." },
-        { title: "Zine Archives", desc: "Managing the transformation of workshop outcomes into digital narratives." }
+        { title: ``4SEASONS Strategy``, desc: ``Developing the permanent framework for cyclic artistic interventions.`` },
+        { title: ``Zine Archives``, desc: ``Managing the transformation of workshop outcomes into digital narratives.`` }
       ],
       insta: "https://www.instagram.com/real_xslll/",
       img: "/shulin.jpg" 
     },
     {
-      name: "Ani NIKOGOSYAN",
-      title: "Directrice artistique",
-      role: "Artiste pluridisciplinaire",
-      bio: "Artiste franco‑arménienne travaillant avec le textile, le fil et le vêtement comme médiums de mémoire, de soin et de résistance.",
+      name: ``Ani NIKOGOSYAN``,
+      title: ``Directrice artistique``,
+      role: ``Artiste pluridisciplinaire``,
+      bio: ``Artiste franco‑arménienne travaillant avec le textile, le fil et le vêtement comme médiums de mémoire, de soin et de résistance.``,
       projects: [
-        { title: "Essais Dynamiques", desc: "Installation showcased at Galerie 0.15, Metz. A study of motion and displacement." },
-        { title: "Memory Pocket of Smiles", desc: "Textile workshop series exploring cherished memories on tissue." },
-        { title: "Fil de Mémoire", desc: "Sculptural textile research on heritage and resistance." }
+        { title: ``Essais Dynamiques``, desc: ``Installation showcased at Galerie 0.15, Metz. A study of motion and displacement.`` },
+        { title: ``Memory Pocket of Smiles``, desc: ``Textile workshop series exploring cherished memories on tissue.`` },
+        { title: ``Fil de Mémoire``, desc: ``Sculptural textile research on heritage and resistance.`` }
       ],
       insta: "https://www.instagram.com/ani_nkgsn/",
       img: "/ani.jpg" 
@@ -134,18 +134,18 @@ export default function CvrcleFinal() {
 
   const pressMentions = [
     {
-      source: "RTL Today",
-      title: "Luxembourg selects LGBTQIA+ role models for European awards in Prague",
+      source: ``RTL Today``,
+      title: ``Luxembourg selects LGBTQIA+ role models for European awards in Prague``,
       link: "https://today.rtl.lu/news/luxembourg/luxembourg-selects-lgbtqia-role-models-for-european-awards-in-prague-1785626408"
     },
     {
-      source: "WOXX",
-      title: "Jung und Queer",
+      source: ``WOXX``,
+      title: ``Jung und Queer``,
       link: "https://www.woxx.lu/lgbtqia-vorbildfunktion/"
     },
     {
-      source: "Tageblatt",
-      title: "Queere Menschen sichtbar machen – das ist das Ziel der „European Pride Business Network LGBTQIA+ & Allies Role Models Awards“, die dieses Jahr zum ersten Mal auch in Luxemburg stattfanden.",
+      source: ``Tageblatt``,
+      title: ``Queere Menschen sichtbar machen – das ist das Ziel der „European Pride Business Network LGBTQIA+ & Allies Role Models Awards“, die dieses Jahr zum ersten Mal auch in Luxemburg stattfanden.``,
       link: "https://www.tageblatt.lu/Luxemburg/Isabel-Spigarelli-als-Role-Model-ausgezeichnet-24654.html"
     }
   ];
@@ -197,10 +197,10 @@ export default function CvrcleFinal() {
                 <h3 className="text-5xl md:text-7xl font-serif mb-8 italic">4SEASONS</h3>
                 <div className="space-y-6 text-lg opacity-90 font-serif leading-relaxed">
                   <p>
-                    A long-term artistic gesture rebuilding our relationship with nature, time, and collective memory. 4SEASONS reflects a way of working in collaboration with nature’s cycles—a symbolic connection between care, bodies, and womanhood.
+                    `A long-term artistic gesture rebuilding our relationship with nature, time, and collective memory. 4SEASONS reflects a way of working in collaboration with nature’s cycles—a symbolic connection between care, bodies, and womanhood.`
                   </p>
                   <p className="text-base opacity-70 italic border-l border-[#D6D4A1]/20 pl-6">
-                    "Every action is documented and preserved, not as a trace, but as living material."
+                    ``Every action is documented and preserved, not as a trace, but as living material.``
                   </p>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default function CvrcleFinal() {
 <div className="md:col-span-5 aspect-[3/4] overflow-hidden border border-[#D6D4A1]/20">
   <img 
     src="/springposter.png" 
-    alt="4SEASONS Spring Workshop Poster" 
+    alt=``4SEASONS Spring Workshop Poster`` 
     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
   />
 </div>
@@ -254,15 +254,15 @@ export default function CvrcleFinal() {
   {`"A space where anger is expressed, torn apart, and artistically recomposed — transforming emotional rupture into creative renewal."`}
 </p>
       <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">
-        Facilitated by: Anna Rexha. 
+        ``Facilitated by: Anna Rexha.`` 
         </p>
         <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">
-        Created by: Shulin Xia.
+        ``Created by: Shulin Xia.``
       </p>
 
 
       <div className="pt-4">
-        <span className="text-[10px] uppercase tracking-[0.5em] border-b border-[#D6D4A1]/30 pb-2 group-hover:border-[#D6D4A1] transition-all">Click to explore the process →</span>
+        <span className="text-[10px] uppercase tracking-[0.5em] border-b border-[#D6D4A1]/30 pb-2 group-hover:border-[#D6D4A1] transition-all">``Click to explore the process`` →</span>
       </div>
     </div>
   </div>
@@ -292,10 +292,10 @@ export default function CvrcleFinal() {
               <h4 className="text-[10px] uppercase tracking-widest mb-12 opacity-95 italic font-light">Featured Reflections</h4>
               <div className="space-y-16">
   <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-    {`"As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived."`}
+    {`As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived.`}
   </p>
   <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-    {`"Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, 'Each trophy combines a solid structure with a textile component... '"`}
+    {`Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, 'Each trophy combines a solid structure with a textile component... '`}
   </p>
 </div>
             </div>
@@ -379,8 +379,8 @@ export default function CvrcleFinal() {
               </div>
               <h4 className="text-3xl md:text-5xl font-serif mb-6 opacity-90">Role Models</h4>
               <p className="text-lg opacity-95 max-w-2xl font-serif italic mb-8 leading-relaxed">
-                In partnership with BLOM ASBL & the European EPBN WISE initiative. 
-                A project celebrating LGBTQIA+ visibility as a form of cultural strength.
+                ``In partnership with BLOM ASBL & the European EPBN WISE initiative. 
+                A project celebrating LGBTQIA+ visibility as a form of cultural strength.``
               </p>
             </div>
             <div className="group border border-white/10 p-8 md:p-12 hover:border-white/20 transition-all duration-700 bg-black/40">
