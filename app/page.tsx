@@ -61,7 +61,7 @@ export default function CvrcleFinal() {
 
   const taglines = [
     "Beyond borders. Between forms.",
-    "Iwwer d &apos; Grenzen eraus. Tëscht de Formen.",
+    `Iwwer d'Grenzen eraus. Tëscht de Formen.`,
     "Au-delà des frontières. Entre les formes.",
     "Përtej kufijve. Ndërmjet formave.",
     "Արտաքս սահմաններից։ Ձևերի միջև։",
@@ -74,7 +74,7 @@ export default function CvrcleFinal() {
       name: "Anna REXHA",
       title: "Présidente & Directrice artistique",
       role: "Artiste pluridisciplinaire",
-      bio: "Artiste vidéaste et artiviste originaire du Kosovo/Luxembourg dont la pratique artistique s &apos; articule autour de l &apos; image animée, du son et de l &apos; identité plurielle.",
+      bio: `Artiste vidéaste et artiviste originaire du Kosovo/Luxembourg dont la pratique artistique s'articule autour de l'image animée, du son et de l'identité plurielle.`,
       projects: [
         { title: "Essais Dynamiques", desc: "Installation showcased at Galerie 0.15, Metz. A study of motion and displacement." },
         { title: "Memory Pocket of Smiles", desc: "Textile workshop series exploring cherished memories on tissue." },
@@ -86,7 +86,7 @@ export default function CvrcleFinal() {
       name: "Shulin XIA",
       title: "Vice présidente & Cheffe de projet & Chargée de communication",
       role: "Vloggeuse et poétesse",
-      bio: "Créatrice chinoise, diplômée en gestion de projets culturels, chargée de coordination, d &apos; administration et de production au sein du collectif.",
+      bio: `Créatrice chinoise, diplômée en gestion de projets culturels, chargée de coordination, d'administration et de production au sein du collectif.`,
       projects: [
         { title: "4SEASONS Strategy", desc: "Developing the permanent framework for cyclic artistic interventions." },
         { title: "Zine Archives", desc: "Managing the transformation of workshop outcomes into digital narratives." }
