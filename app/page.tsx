@@ -169,7 +169,7 @@ export default function CvrcleFinal() {
         <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20">
           <div className="relative group mb-12">
             <div 
-              className="w-72 h-72 md:w-[500px] md:h-[500px] bg-[#D6D4A1] opacity-90 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-100"
+              className="w-72 h-72 md:w-[500px] md:h-[500px] bg-[#D6D4A1] opacity-90 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-100 animate-[pulse_10s_infinite]"
               style={{
                 maskImage: 'url("/logo.png")',
                 WebkitMaskImage: 'url("/logo.png")',
