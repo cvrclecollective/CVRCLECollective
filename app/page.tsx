@@ -74,7 +74,7 @@ export default function CvrcleFinal() {
       name: "Anna REXHA",
       title: "Présidente & Directrice artistique",
       role: "Artiste pluridisciplinaire",
-      bio: "Artiste vidéaste et artiviste originaire du Kosovo/Luxembourg dont la pratique artistique s’articule autour de l’image animée, du son et de l’identité plurielle.",
+      bio: "Artiste vidéaste et artiviste originaire du Kosovo/Luxembourg dont la pratique artistique s&apos;articule autour de l&apos;image animée, du son et de l&apos;identité plurielle.",
       projects: [
         { title: "Essais Dynamiques", desc: "Installation showcased at Galerie 0.15, Metz. A study of motion and displacement." },
         { title: "Memory Pocket of Smiles", desc: "Textile workshop series exploring cherished memories on tissue." },
@@ -86,7 +86,7 @@ export default function CvrcleFinal() {
       name: "Shulin XIA",
       title: "Vice présidente & Cheffe de projet & Chargée de communication",
       role: "Vloggeuse et poétesse",
-      bio: "Créatrice chinoise, diplômée en gestion de projets culturels, chargée de coordination, d’administration et de production au sein du collectif.",
+      bio: "Créatrice chinoise, diplômée en gestion de projets culturels, chargée de coordination, d&apos;administration et de production au sein du collectif.",
       projects: [
         { title: "4SEASONS Strategy", desc: "Developing the permanent framework for cyclic artistic interventions." },
         { title: "Zine Archives", desc: "Managing the transformation of workshop outcomes into digital narratives." }
@@ -204,7 +204,7 @@ export default function CvrcleFinal() {
                     A long-term artistic gesture rebuilding our relationship with nature, time, and collective memory. 4SEASONS reflects a way of working in collaboration with nature’s cycles—a symbolic connection between care, bodies, and womanhood.
                   </p>
                   <p className="text-base opacity-70 italic border-l border-[#D6D4A1]/20 pl-6">
-                    "Every action is documented and preserved, not as a trace, but as living material."
+                    Every action is documented and preserved, not as a trace, but as living material.
                   </p>
                 </div>
               </div>
@@ -246,7 +246,7 @@ export default function CvrcleFinal() {
                     <p className="text-base pt-4 opacity-80 underline underline-offset-4 decoration-[#D6D4A1]/30">May 23rd, 2026 — 15h00</p>
                   </div>
                   <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">
-                    &quot;A space where anger is expressed, torn apart, and artistically recomposed — transforming emotional rupture into creative renewal.&quot;
+                    &quot;A space where anger is expressed, torn apart, and artistically recomposed - transforming emotional rupture into creative renewal.&quot;
                   </p>
                   <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">Facilitated by: Anna Rexha.</p>
                   <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">Created by: Shulin Xia.</p>
@@ -283,7 +283,7 @@ export default function CvrcleFinal() {
                   &quot;As an artistic collective, we understand role models as bearers of stories that should be made visible, shared, and archived.&quot;
                 </p>
                 <p className="text-2xl md:text-3xl font-serif italic opacity-95 hover:opacity-100 transition-opacity leading-relaxed">
-                  &quot;Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, &apos;Each trophy combines a solid structure with a textile component... &apos;&quot;
+                Describing the trophies on behalf of CVRCLE, president and artistic director of the collective Anna Rexha said, &quot;Each trophy combines a solid structure with a textile component...&quot;.
                 </p>
               </div>
             </div>
