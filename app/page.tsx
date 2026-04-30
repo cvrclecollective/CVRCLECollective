@@ -156,10 +156,25 @@ export default function CvrcleFinal() {
     <main className="relative min-h-screen font-light selection:bg-[#D6D4A1] selection:text-black bg-[#050505] text-[#D6D4A1]">
       {/* FIXED CSS BLOCK */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
-        body { margin: 0; background-color: #050505; cursor: crosshair; overflow-x: hidden; }
-        .font-serif { font-family: 'Cormorant Garamond', serif; }
-      `}} />
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
+  body { margin: 0; background-color: #050505; cursor: crosshair; overflow-x: hidden; }
+  .font-serif { font-family: 'Cormorant Garamond', serif; }
+
+  @keyframes spin-cw {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes spin-ccw {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+  .spin-cw {
+    animation: spin-cw 20s linear infinite;
+  }
+  .spin-ccw {
+    animation: spin-ccw 20s linear infinite;
+  }
+` }} /> 
 
       <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-[60]" />
 
@@ -167,9 +182,23 @@ export default function CvrcleFinal() {
         
         {/* 1. HERO SECTION */}
         <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20">
-          <div className="relative group mb-12">
+          {/* Layer 1: Outer Spinning Circle */}
+          <div className="absolute inset-0 spin-cw opacity-30">
+              <svg viewBox="0 0 100 100" className="w-full h-full stroke-[#D6D4A1] fill-none">
+                <circle cx="50" cy="50" r="48" strokeWidth="0.2" />
+              </svg>
+            </div>
+
+            {/* Layer 2: Inner Spinning Circle */}
+            <div className="absolute inset-0 spin-ccw scale-90 opacity-50">
+              <svg viewBox="0 0 100 100" className="w-full h-full stroke-[#D6D4A1] fill-none">
+                <circle cx="50" cy="50" r="48" strokeWidth="0.2" />
+              </svg>
+            </div>
+
+            {/* Layer 3: The Butterfly (The original code you had) */}
             <div 
-              className="w-72 h-72 md:w-[500px] md:h-[500px] bg-[#D6D4A1] opacity-90 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-100 animate-[pulse_10s_infinite]"
+              className="w-72 h-72 md:w-[500px] md:h-[500px] bg-[#D6D4A1] opacity-90 transition-all duration-1000 group-hover:scale-105 animate-[pulse_5s_infinite]"
               style={{
                 maskImage: 'url("/logo.png")',
                 WebkitMaskImage: 'url("/logo.png")',
@@ -181,7 +210,6 @@ export default function CvrcleFinal() {
                 WebkitMaskPosition: 'center'
               }}
             />
-          </div>
 
           <div className="space-y-2">
             {taglines.map((line, i) => (
@@ -190,6 +218,36 @@ export default function CvrcleFinal() {
               </p>
             ))}
           </div>
+
+          {/* ABOUT SECTION */}
+        <div className="max-w-2xl mx-auto mt-20 px-6 pb-20">
+          <details className="group cursor-pointer outline-none">
+            <summary className="list-none text-[10px] tracking-[0.4em] opacity-50 hover:opacity-100 transition-opacity uppercase mb-8 focus:outline-none">
+              [ Read Manifesto ]
+            </summary>
+            
+            <div className="text-left space-y-6 animate-fadeIn">
+              <h3 className="text-lg md:text-xl font-serif italic mb-6">
+                CVRCLE Collective: Beyond Borders. Between Forms.
+              </h3>
+              <p className="text-sm md:text-base leading-relaxed opacity-80 font-light">
+                We are CVRCLE Collective, a multicultural and multidisciplinary group of artists and cultural workers exploring what exists in the in-between: between places, memories, identities, and narratives.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed opacity-80 font-light">
+                Our practice emerges from migration stories, from the margins, from the voices that have been silenced or overlooked. Through video, textile, sound, installation, and image, we create spaces of care and visibility where stories can be held, shared, and transformed.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed opacity-80 font-light italic">
+                As a collective, we believe in art as a bridge: between people, between worlds, between the seen and the unseen.
+              </p>
+              <p className="text-sm md:text-base leading-relaxed opacity-80 font-light">
+                We weave together our backgrounds, our practices, and our communities to make room for narratives that resist erasure. CVRCLE is a space of resonance. A place where the invisible becomes visible. Where the unheard is amplified. Where the margins find form.
+              </p>
+              <p className="text-sm md:text-base tracking-widest pt-4 opacity-100 uppercase">
+                Welcome to our circle.
+              </p>
+            </div>
+          </details>
+        </div>
         </section>
 
         {/* 4SEASONS UMBRELLA PROJECT */}
@@ -209,7 +267,7 @@ export default function CvrcleFinal() {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <div className="w-64 h-64 border border-[#D6D4A1]/20 rounded-full flex items-center justify-center relative animate-[pulse_8s_infinite]">
+                <div className="w-64 h-64 border border-[#D6D4A1]/20 rounded-full flex items-center justify-center relative animate-[pulse_5s_infinite]">
                   <div className="absolute inset-0 border border-[#D6D4A1]/10 rounded-full scale-110"></div>
                   <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-widest opacity-60">
                     <span className="text-center">Spring</span>
