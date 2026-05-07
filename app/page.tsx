@@ -738,11 +738,12 @@ const members: Member[] = [
 
     {/* Modal Container */}
     <div className="relative bg-[#080808] border border-white/10 w-full max-w-5xl p-5 md:p-16 overflow-y-auto max-h-[90vh] custom-scroll">
-      
+    const fragmentData = activeFragment ? (fragmentContent as any)[activeFragment] : null;
       {/* Header Section: Title & Back Button */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8 md:mb-12">
         <h3 className="text-3xl md:text-6xl font-serif italic">
-        {activeProject ? activeProject.title : (activeFragment ? (fragmentContent as any)[activeFragment]?.title : '')}
+
+  {activeProject ? activeProject.title : fragmentData?.title || ''}
         </h3>
         
         <button 
@@ -756,7 +757,8 @@ const members: Member[] = [
       {/* Intro text (Hides when a story is open) */}
       {!activeProject && (
         <p className="text-lg md:text-xl mb-8 md:mb-12 opacity-80 font-serif leading-relaxed italic max-w-2xl">
-          {fragmentContent[activeFragment].text}
+        {fragmentData?.text || ''}
+      </p>
         </p>
       )}
 
