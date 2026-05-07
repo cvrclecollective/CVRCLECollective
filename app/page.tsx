@@ -290,7 +290,7 @@ const members: Member[] = [
         onClick={() => {
           if (item === 'Sunday') {
             setActiveFragment('Current');
-            const sundayProject = fragmentContent['Current'].list.find(p => p.title === `Sunday`);
+            const sundayProject = fragmentContent['Current']?.list.find(p => p.title === `Sunday`);
             if (sundayProject) setActiveProject(sundayProject);
           } else {
             const id = item === 'Fragments' ? 'grid-section' : item.toLowerCase();
@@ -957,8 +957,7 @@ The final piece becomes a visual trace of transformation rather than destruction
       {activePoem && (
         <div className="fixed inset-0 z-[160] flex items-center justify-center bg-black/90 backdrop-blur-md p-6">
           <div className="max-w-2xl text-center space-y-8 animate-fade-in">
-          <Image 
-              src={activePoem.img} 
+          <img src={activePoem.img} alt="Poem Illustration"
               className="max-h-[40vh] md:max-h-[50vh] mx-auto border border-[#D6D4A1]/20 shadow-2xl" 
             />
             <div className="space-y-4">
