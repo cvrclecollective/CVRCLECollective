@@ -290,7 +290,7 @@ const members: Member[] = [
         onClick={() => {
           if (item === 'Sunday') {
             setActiveFragment('Current');
-            const sundayProject = fragmentContent['Current']?.list.find(p => p.title === `Sunday`);
+            const sundayProject = (fragmentContent['Current']?.list || []).find(p => p.title === 'Sunday');
             if (sundayProject) setActiveProject(sundayProject);
           } else {
             const id = item === 'Fragments' ? 'grid-section' : item.toLowerCase();
