@@ -836,14 +836,14 @@ const members: Member[] = [
     <h4 className="text-xs tracking-[0.3em] uppercase opacity-60">The Prompts</h4>
   </div>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 italic text-base lg:text-lg font-light opacity-90 pl-4 lg:pl-6">
-    <div>`I was told to stop being...”</div>
-    <div>`No one listened when...`</div>
-    <div>`It felt unfair that...`</div>
-    <div>`I swallowed my anger when...`</div>
-    <div>`I wish I had shouted...`</div>
-    <div>&aposI wasn't allowed to...&apos</div>
-    <div>`It made me angry when...`</div>
-    <div>`I wanted to break...`</div>
+    <div>&apos;I was told to stop being...”</div>
+    <div>&apos;No one listened when...&apos;</div>
+    <div>&apos;It felt unfair that...&apos;</div>
+    <div>&apos;I swallowed my anger when...&apos;</div>
+    <div>&apos;I wish I had shouted...&apos;</div>
+    <div>&apos;I wasn&apos;t allowed to...&apos;</div>
+    <div>&apos;It made me angry when...&apos;</div>
+    <div>&apos;I wanted to break...&apos;</div>
   </div>
 </div>
 {/* THE PROCESS SECTION */}
