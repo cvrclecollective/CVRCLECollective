@@ -467,7 +467,7 @@ const members: Member[] = [
             >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div className="md:col-span-5 h-full flex items-center overflow-hidden">
-                  <img 
+                <Image
                     src="/springposter.png" 
                     alt="4SEASONS Spring Workshop Poster" 
                     className="w-full h-auto max-h-[400px] object-contain transition-transform duration-700 group-hover:scale-105"
@@ -516,7 +516,7 @@ const members: Member[] = [
           <h2 className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1] mb-8">Active Digital Project</h2>
           <h3 className="text-3xl md:text-6xl font-serif mb-6 italic leading-tight">Damp Memories <br/>Forest</h3>
           <p className="text-xl font-serif opacity-80 leading-relaxed italic border-l border-[#D6D4A1]/20 pl-4 md:pl-8">
-            "Write something that never dried."
+          &quot;Write something that never dried.&quot;
           </p>
         </div>
 
@@ -561,7 +561,7 @@ const members: Member[] = [
         <div className="relative w-full max-w-[280px] md:max-w-[320px]">
           <div className="absolute -inset-1.5 border border-[#D6D4A1]/10 rounded-sm group-hover:border-[#D6D4A1]/30 transition-all duration-1000"></div>
           <div className="h-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 opacity-80 group-hover:opacity-100 shadow-2xl">
-            <img 
+            <Image 
               src="/damp-forest-sketch.png" 
               alt="Damp Memories Forest Concept Sketch" 
               className="w-full h-full object-contain transform scale-105 group-hover:scale-100 transition-transform duration-[2000ms]"
@@ -629,7 +629,7 @@ const members: Member[] = [
           {members.map((artist) => (
             <div key={artist.name} className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start py-12 border-b border-white/5 last:border-0">
               <div className="md:col-span-4 overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-70 group-hover:opacity-100 aspect-[3/4] bg-zinc-900">
-                 <img src={artist.img} alt={artist.name} className="w-full h-full object-cover" />
+                 <Image src={artist.img} alt={artist.name} className="w-full h-full object-cover" />
               </div>
               <div className="md:col-span-8 space-y-6 mt-8 md:mt-0">
               <button 
@@ -774,7 +774,7 @@ const members: Member[] = [
       {/* RIGHT SIDE: The Image(s) */}
       {activeProject.img && (
         <div className="flex-1 w-full mt-8 md:mt-0">
-          <img 
+          <Image 
             src={activeProject.img} 
             alt={activeProject.title} 
             className="w-full h-auto object-cover" 
@@ -840,7 +840,7 @@ const members: Member[] = [
     <div>`It felt unfair that...`</div>
     <div>`I swallowed my anger when...`</div>
     <div>`I wish I had shouted...`</div>
-    <div>`I wasn't allowed to...`</div>
+    <div>&aposI wasn't allowed to...&apos</div>
     <div>`It made me angry when...`</div>
     <div>`I wanted to break...`</div>
   </div>
@@ -901,7 +901,7 @@ The final piece becomes a visual trace of transformation rather than destruction
           <div className="relative bg-[#080808] border border-[#D6D4A1]/10 w-full max-w-6xl overflow-y-auto max-h-[90vh]">
             <div className="grid grid-cols-1 md:grid-cols-12">
               <div className="md:col-span-5 h-[300px] md:h-full bg-zinc-900">
-                <img src={activeMember.img} alt={activeMember.name} className="w-full h-full object-cover grayscale opacity-80" />
+              <Image src={activeMember.img} alt={activeMember.name} className="w-full h-full object-cover grayscale opacity-80" />
               </div>
               <div className="md:col-span-7 p-6 md:p-16 space-y-12">
                 <div className="flex flex-col md:flex-row justify-between items-start gap-6">
@@ -956,7 +956,7 @@ The final piece becomes a visual trace of transformation rather than destruction
       {activePoem && (
         <div className="fixed inset-0 z-[160] flex items-center justify-center bg-black/90 backdrop-blur-md p-6">
           <div className="max-w-2xl text-center space-y-8 animate-fade-in">
-            <img 
+          <Image 
               src={activePoem.img} 
               className="max-h-[40vh] md:max-h-[50vh] mx-auto border border-[#D6D4A1]/20 shadow-2xl" 
             />
@@ -971,7 +971,7 @@ The final piece becomes a visual trace of transformation rather than destruction
                 )}
               </div>
 
-              <p className="text-xl md:text-2xl font-serif italic opacity-90">"{activePoem.content}"</p>
+              <p className="text-xl md:text-2xl font-serif italic opacity-90">{activePoem.content}</p>
               <p className="text-[10px] uppercase tracking-widest opacity-60">{activePoem.collection}</p>
             </div>
             <button 
