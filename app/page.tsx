@@ -742,7 +742,7 @@ const members: Member[] = [
       {/* Header Section: Title & Back Button */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8 md:mb-12">
         <h3 className="text-3xl md:text-6xl font-serif italic">
-          {activeProject ? activeProject.title : fragmentContent[activeFragment].title}
+        {activeProject ? activeProject.title : (activeFragment ? fragmentContent[activeFragment]?.title : '')}
         </h3>
         
         <button 
