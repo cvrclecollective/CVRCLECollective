@@ -276,7 +276,8 @@ const members: Member[] = [
   if (!mounted) return <div className="bg-[#050505] min-h-screen" />;
 
 
-  const fragmentData = activeFragment ? (fragmentContent as any)[activeFragment] : null;
+  const fragmentData = (fragmentContent as any)[activeFragment || 'Fragments'];
+  
   return (
     <>
       <nav className="fixed top-0 left-0 w-full z-[200] p-4 md:p-6 md:px-12 flex justify-between items-center mix-blend-difference">
