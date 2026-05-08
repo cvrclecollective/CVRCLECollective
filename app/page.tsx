@@ -741,10 +741,10 @@ const members: Member[] = [
 
     {/* Modal Container */}
     <div className="relative bg-[#080808] border border-white/10 w-full max-w-5xl p-5 md:p-16 overflow-y-auto max-h-[90vh] custom-scroll">
-    const fragmentData = activeFragment ? (fragmentContent as any)[activeFragment] : null;
+    
       {/* Header Section: Title & Back Button */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8 md:mb-12">
-        <h3 className="text-3xl md:text-6xl font-serif italic text-[#facc15]">
+        <h3 className="text-3xl md:text-6xl font-serif italic text-[#fef9c3]">
 
         {activeProject ? (activeProject as any).title : (fragmentData as any)?.title}
 </h3>
