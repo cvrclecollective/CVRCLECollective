@@ -274,10 +274,10 @@ const members: Member[] = [
 
   if (!mounted) return <div className="bg-[#050505] min-h-screen" />;
 
-  
+
   return (
     <>
-  <nav className="fixed top-0 left-0 w-full z-[200] p-4 md:p-6 md:px-12 flex justify-between items-center mix-blend-difference">
+      <nav className="fixed top-0 left-0 w-full z-[200] p-4 md:p-6 md:px-12 flex justify-between items-center mix-blend-difference">
   <div className="text-[11px] uppercase tracking-[0.2em] md:tracking-[0.5em] font-serif italic text-white/90">
   <a href="#members" className="hover:opacity-70 transition-opacity cursor-pointer">
     Cvrcle Collective
@@ -307,9 +307,8 @@ const members: Member[] = [
 </nav>
 
     
-    <main className="relative min-h-screen font-light selection:bg-[#D6D4A1] selection:text-black bg-[#050505] text-[#D6D4A1]">
-      
-      {/* FIXED CSS BLOCK */}
+<main className="relative min-h-screen font-light selection:bg-[#D6D4A1] selection:text-black bg-[#050505] text-[#F5F5F5]">
+        {/* FIXED CSS BLOCK */}
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
         body { margin: 0; background-color: #050505; cursor: crosshair; overflow-x: hidden; }
@@ -757,9 +756,9 @@ const members: Member[] = [
       {/* Intro text (Hides when a story is open) */}
       {!activeProject && (
         <p className="text-lg md:text-xl mb-8 md:mb-12 opacity-80 font-serif leading-relaxed italic max-w-2xl">
-        {fragmentData?.text || ''}
-      </p>
+          {fragmentData?.text || ''}
         </p>
+        
       )}
 
       {/* Main Content Area */}
@@ -982,10 +981,10 @@ The final piece becomes a visual trace of transformation rather than destruction
             >
               Close Fragment
               </button>
-          </div>
-        </div>
-      )}
-    </main>
+              </div>
+              </div>
+        )}
+      </main>
     </>
   );
 }
