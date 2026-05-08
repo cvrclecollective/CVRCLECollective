@@ -743,8 +743,8 @@ const members: Member[] = [
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8 md:mb-12">
         <h3 className="text-3xl md:text-6xl font-serif italic">
 
-  {activeProject ? activeProject.title : fragmentData?.title || ''}
-        </h3>
+        {activeProject ? (activeProject as any).title : fragmentData?.title}
+</h3>
         
         <button 
           onClick={() => activeProject ? setActiveProject(null) : setActiveFragment(null)} 
