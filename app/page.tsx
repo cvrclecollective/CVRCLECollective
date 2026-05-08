@@ -471,7 +471,7 @@ const members: Member[] = [
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div className="md:col-span-5 h-full flex items-center overflow-hidden">
                 <img 
-  src="/springposter.png" 
+  src="/springposter.jpeg" 
   alt="Spring Poster"
   width={500}   // Add this
   height={750}  // Add this
