@@ -41,6 +41,8 @@ export default function CvrcleFinal() {
   const [mounted, setMounted] = useState(false);
   const [activePoem, setActivePoem] = useState<any>(null);
 
+  const fragmentData = activeFragment ? (fragmentContent as any)[activeFragment] : null;
+
   useEffect(() => {
     setMounted(true);
   }, []);
