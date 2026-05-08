@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image';
+
 
 import { useEffect, useRef, useState } from "react";
 interface Member {
@@ -467,7 +467,7 @@ const members: Member[] = [
             >
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div className="md:col-span-5 h-full flex items-center overflow-hidden">
-                <Image 
+                <img 
   src="/springposter.png" 
   alt="Spring Poster"
   width={500}   // Add this
@@ -562,7 +562,7 @@ const members: Member[] = [
         <div className="relative w-full max-w-[280px] md:max-w-[320px]">
           <div className="absolute -inset-1.5 border border-[#D6D4A1]/10 rounded-sm group-hover:border-[#D6D4A1]/30 transition-all duration-1000"></div>
           <div className="h-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 opacity-80 group-hover:opacity-100 shadow-2xl">
-            <Image 
+            <img 
               src="/damp-forest-sketch.png" 
               alt="Damp Memories Forest Concept Sketch" 
               className="w-full h-full object-contain transform scale-105 group-hover:scale-100 transition-transform duration-[2000ms]"
@@ -630,7 +630,7 @@ const members: Member[] = [
           {members.map((artist) => (
             <div key={artist.name} className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start py-12 border-b border-white/5 last:border-0">
               <div className="md:col-span-4 overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-70 group-hover:opacity-100 aspect-[3/4] bg-zinc-900">
-                 <Image src={artist.img} alt={artist.name} className="w-full h-full object-cover" />
+                 <img src={artist.img} alt={artist.name} className="w-full h-full object-cover" />
               </div>
               <div className="md:col-span-8 space-y-6 mt-8 md:mt-0">
               <button 
@@ -777,7 +777,7 @@ const members: Member[] = [
       {/* RIGHT SIDE: The Image(s) */}
       {activeProject.img && (
         <div className="flex-1 w-full mt-8 md:mt-0">
-          <Image 
+          <img
             src={activeProject.img} 
             alt={activeProject.title} 
             className="w-full h-auto object-cover" 
@@ -904,7 +904,7 @@ The final piece becomes a visual trace of transformation rather than destruction
           <div className="relative bg-[#080808] border border-[#D6D4A1]/10 w-full max-w-6xl overflow-y-auto max-h-[90vh]">
             <div className="grid grid-cols-1 md:grid-cols-12">
               <div className="md:col-span-5 h-[300px] md:h-full bg-zinc-900">
-              <Image src={activeMember.img} alt={activeMember.name} className="w-full h-full object-cover grayscale opacity-80" />
+              <img src={activeMember.img} alt={activeMember.name} className="w-full h-full object-cover grayscale opacity-80" />
               </div>
               <div className="md:col-span-7 p-6 md:p-16 space-y-12">
                 <div className="flex flex-col md:flex-row justify-between items-start gap-6">
