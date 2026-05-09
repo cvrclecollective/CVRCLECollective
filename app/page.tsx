@@ -194,18 +194,28 @@ const members: Member[] = [
       ]
     },
     
-    'ART': {
+    'ART & WORKSHOPS': {
       title: `Fragments: Artistic Work`,
-      text: `A visual and sensory archive of installations, soundscapes, and physical media.`,
+      text: `KISS: Redefining the Narrative. This exhibition brings together five artists to dismantle the dominant, heteronormative "ideal" of romance. Through photography, painting, and scenography, the artists explore the KISS as a complex act of resistance and reclamation. — Anna Rexha`,
       list: [
-        {
-          title: `Title of Installation`,
-          artist: `Artist Name`,
-          content: `Description of the work and the concept behind it.`,
-          img: "/images/artwork1.jpg",
-          type: `Installation`, // Sub-section identifier
-          collection: `Artistic Fragments`
-        },
+            {
+              title: 'KISS',
+              poster: '/images/Untitled-1 (1).jpg', // Reference the poster file here
+              artist: 'Ani Nikogosyan, Yumeng Fang, CHARLIE, Kassia, Anna Rexha',                
+              // Grouping the images into two distinct sets
+            preparations: ["/images/artwork1.jpg", "/images/artwork2.jpg", "/images/artwork3.jpg"],
+            vernissage: ["/images/artwork4.jpg", "/images/artwork5.jpg", "/images/artwork6.jpg"],
+            type: 'Queer Exhibition',
+            collection: '"Kissollective", curated by Anna Rexha'
+          },
+          {
+            title: 'Sensory Mapping Workshop',
+            artist: 'Led by Anna Rexha',
+            content: 'An immersive session exploring the intersection of collective memory and soundscapes. Participants will map their own "fragments" of memory through physical media.',
+            img: "/images/workshop-cover.jpg",
+            type: "Workshop",
+            collection: "Part of the KISS educational series"
+          },
         {
           title: `Audio Piece Name`,
           artist: `Artist Name`,
@@ -502,6 +512,54 @@ const members: Member[] = [
             </button>
           </div>
         </section>
+
+        {/* CUSTOM KISS EXHIBITION SECTION */}
+<section className="relative py-24 px-6 border-t border-white/5 overflow-hidden">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+    
+    {/* LEFT SIDE: THE POSTER */}
+    <div className="md:col-span-5 relative z-10">
+      <div className="relative group">
+        <img 
+          src="/images/Untitled-1 (1).jpg" 
+          className="w-full shadow-2xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-700 border border-white/10" 
+          alt="KISS Poster"
+        />
+        {/* Subtle glow behind poster */}
+        <div className="absolute -inset-4 bg-[#fef9c3]/5 blur-3xl -z-10 rounded-full"></div>
+      </div>
+    </div>
+
+    {/* RIGHT SIDE: THE TEXT */}
+    <div className="md:col-span-7 relative">
+      {/* Background Title Peeking Out - Artistic Depth */}
+      <h1 className="absolute -top-16 -left-16 text-[15vw] font-serif italic text-[#fef9c3]/5 select-none pointer-events-none z-0 leading-none">
+        KISS
+      </h1>
+      
+      <div className="relative z-10 space-y-8">
+        <div>
+           <h2 className="text-[10px] uppercase tracking-[0.6em] text-[#fef9c3]/60 mb-4">Art Exhibition</h2>
+           <h3 className="text-4xl md:text-6xl font-serif italic text-[#fef9c3] leading-tight">Redefining the <br/>Narrative</h3>
+        </div>
+
+        <div className="space-y-6 text-lg leading-relaxed font-light opacity-90">
+          <p>
+            This exhibition brings together five artists to dismantle the dominant, heteronormative "ideal" of romance that has long silenced diverse voices. By challenging the binary patriarchal structures of our society, these works shift the focus toward narratives that have been historically marginalized and rendered invisible.
+          </p>
+          <p className="italic border-l border-[#fef9c3]/30 pl-6">
+            KISS is an invitation to witness love in its most authentic forms—where the act of intimacy becomes a path to healing, self-discovery, and total freedom.
+          </p>
+        </div>
+        
+        <div className="pt-6 border-t border-white/10">
+          <p className="font-serif text-[#fef9c3] tracking-[0.4em] text-sm italic">— ANNA REXHA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
         {/* DAMP MEMORIES FOREST - ACTIVE DIGITAL PROJECT */}
 <section className="py-12 px-6 md:px-14 border-t border-[#D6D4A1]/10 bg-[#0a0f0a]/40 relative overflow-hidden group cursor-pointer">
   {/* 1. Ambient Background Mist Effect */}
