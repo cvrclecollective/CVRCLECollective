@@ -452,8 +452,8 @@ const members: Member[] = [
                 </div>
               </div>
               <div className="flex justify-center items-center mt-12 md:mt-0">
-                <div className="w-48 h-48 md:w-64 md:h-64 border border-[#fef9c3]/60 rounded-full flex items-center justify-center relative animate-[pulse_8s_infinite]">
-                  <div className="absolute inset-0 border border-[#fef9c3]/30 rounded-full scale-110"></div>
+              className="w-48 h-48 md:h-64 md:w-64 border-2 border-[#fef9c3] rounded-full flex items-center justify-center relative animate-[pulse_4s_ease-in-out_infinite]"
+              <div className="absolute inset-0 border border-[#fef9c3]/40 rounded-full scale-110"></div>
                   <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-widest opacity-80">
                     <span className="text-center">Spring</span>
                     <span className="text-center">Summer</span>
