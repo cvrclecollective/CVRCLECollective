@@ -310,7 +310,7 @@ const members: Member[] = [
 </nav>
 
     
-<main className="relative min-h-screen font-light selection:bg-[#D6D4A1] selection:text-black bg-[#050505] text-[#F5F5F5]">
+<main className="min-h-screen bg-[#080808] text-[#fef9c3] selection:bg-white/10">
         {/* FIXED CSS BLOCK */}
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
@@ -446,7 +446,7 @@ const members: Member[] = [
                   <p>
                     A long-term artistic gesture rebuilding our relationship with nature, time, and collective memory. 4SEASONS reflects a way of working in collaboration with nature’s cycles—a symbolic connection between care, bodies, and womanhood.
                   </p>
-                  <p className="text-base opacity-70 italic border-l border-[#D6D4A1]/20 pl-4 md:pl-6">
+                  <p className="text-base opacity-80 italic border-l border-[#D6D4A1]/20 pl-4 md:pl-6">
                     Every action is documented and preserved, not as a trace, but as living material.
                   </p>
                 </div>
@@ -454,7 +454,7 @@ const members: Member[] = [
               <div className="flex justify-center items-center mt-12 md:mt-0">
                 <div className="w-48 h-48 md:w-64 md:h-64 border border-[#D6D4A1]/20 rounded-full flex items-center justify-center relative animate-[pulse_8s_infinite]">
                   <div className="absolute inset-0 border border-[#D6D4A1]/10 rounded-full scale-110"></div>
-                  <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-widest opacity-60">
+                  <div className="grid grid-cols-2 gap-4 text-[9px] uppercase tracking-widest opacity-80">
                     <span className="text-center">Spring</span>
                     <span className="text-center">Summer</span>
                     <span className="text-center">Autumn</span>
@@ -486,7 +486,7 @@ const members: Member[] = [
                   </h4>
                   <div className="space-y-2 font-serif text-xl opacity-90">
                     <p className="tracking-wide">RAINBOW CENTER</p>
-                    <p className="text-sm opacity-60 uppercase tracking-widest">19 Rue du Saint Esprit, 1475 Luxembourg</p>
+                    <p className="text-sm opacity-80 uppercase tracking-widest">19 Rue du Saint Esprit, 1475 Luxembourg</p>
                     <p className="text-base pt-4 opacity-80 underline underline-offset-4 decoration-[#D6D4A1]/30">May 23rd, 2026 — 15h00</p>
                   </div>
                   <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">
@@ -573,7 +573,7 @@ const members: Member[] = [
           </div>
           {/* Floating Label */}
           <div className="absolute bottom-7 left-2 md:-left-5 bg-black/90 backdrop-blur-md border border-[#D6D4A1]/20 p-3 max-w-[160px] z-20">
-  <p className="text-[10px] uppercase tracking-[0.2em] leading-relaxed opacity-80 font-sans">
+  <p className="text-[10px] uppercase tracking-[0.2em] leading-relaxed opacity-70 font-sans">
               Status: Pilot Stage <br/>
               Format: Asynchronous Whiteboard <br/>
               Phase: 2026 Collective Archive
@@ -632,7 +632,7 @@ const members: Member[] = [
           <div className="space-y-24 md:space-y-48">
           {members.map((artist) => (
             <div key={artist.name} className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start py-12 border-b border-white/5 last:border-0">
-              <div className="md:col-span-4 overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-70 group-hover:opacity-100 aspect-[3/4] bg-zinc-900">
+              <div className="md:col-span-4 overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-80 group-hover:opacity-100 aspect-[3/4] bg-zinc-900">
                  <img src={artist.img} alt={artist.name} className="w-full h-full object-cover" />
               </div>
               <div className="md:col-span-8 space-y-6 mt-8 md:mt-0">
@@ -642,7 +642,7 @@ const members: Member[] = [
 >
   <h3 className="text-2xl md:text-5xl font-serif font-extralight tracking-tighter group-hover/name:text-white transition-colors flex items-baseline gap-4">
     {artist.name}
-    <span className="text-lg md:text-3xl opacity-50 font-serif italic lowercase tracking-normal">
+    <span className="text-lg md:text-3xl opacity-70 font-serif italic lowercase tracking-normal">
       {artist.pronouns}
     </span>
   </h3>
@@ -659,7 +659,7 @@ const members: Member[] = [
                   >
                     See more about the artist
                   </button>
-                  <a href={artist.insta} target="_blank" rel="noopener noreferrer" className="text-[10px] uppercase tracking-[0.5em] opacity-50 hover:opacity-100 transition-all">Instagram</a>
+                  <a href={artist.insta} target="_blank" rel="noopener noreferrer" className="text-[10px] uppercase tracking-[0.5em] opacity-70 hover:opacity-100 transition-all">Instagram</a>
                 </div>
               </div>
             </div>
@@ -802,7 +802,7 @@ const members: Member[] = [
                 onClick={() => setActiveProject(poem)}
                 className="block w-full text-left hover:text-[#D6D4A1] transition-all italic font-serif text-2xl group"
               >
-                <span className="opacity-40 group-hover:opacity-100 mr-4 transition-opacity">—</span>
+                <span className="opacity-70 group-hover:opacity-100 mr-4 transition-opacity">—</span>
                 {poem.title}
               </button>
             ))}
@@ -822,7 +822,7 @@ const members: Member[] = [
               <div className="space-y-4">
                 <p className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1]">Workshop Proposal — Spring 2026</p>
                 <h3 className="text-3xl md:text-6xl font-serif italic tracking-tight">Transforming Anger</h3>
-                <p className="text-base md:text-lg font-serif opacity-60">CVRCLE x RAINBOW CENTER | Luxembourg</p>
+                <p className="text-base md:text-lg font-serif opacity-70">CVRCLE x RAINBOW CENTER | Luxembourg</p>
               </div>
               <button onClick={() => setActiveWorkshop(false)} className="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white hover:text-black transition-all">[ Close ]</button>
             </div>
@@ -838,7 +838,7 @@ const members: Member[] = [
 <div className="mb-10 lg:mb-20">
   <div className="flex items-center gap-4 mb-8">
     <div className="w-1 h-6 bg-[#D6D4A1]" />
-    <h4 className="text-xs tracking-[0.3em] uppercase opacity-60">The Prompts</h4>
+    <h4 className="text-xs tracking-[0.3em] uppercase opacity-70">The Prompts</h4>
   </div>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 italic text-base lg:text-lg font-light opacity-90 pl-4 lg:pl-6">
     <div>&apos;I was told to stop being...”</div>
