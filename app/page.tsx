@@ -572,7 +572,7 @@ const members: Member[] = [
             />
           </div>
           {/* Floating Label */}
-          <div className="absolute bottom-7 left-2 md:-left-5 bg-black/90 backdrop-blur-md border border-[#D6D4A1]/20 p-3 max-w-[160px] z-20">
+          <div className="absolute bottom-7 left-2 md:-left-5 bg-black/40 backdrop-blur-md border border-[#D6D4A1]/20 p-3 max-w-[160px] z-20">
   <p className="text-[10px] uppercase tracking-[0.2em] leading-relaxed opacity-70 font-sans">
               Status: Pilot Stage <br/>
               Format: Asynchronous Whiteboard <br/>
