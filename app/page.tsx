@@ -513,53 +513,6 @@ const members: Member[] = [
           </div>
         </section>
 
-        {/* CUSTOM KISS EXHIBITION SECTION */}
-<section className="relative py-24 px-6 border-t border-white/5 overflow-hidden">
-  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
-    
-    {/* LEFT SIDE: THE POSTER */}
-    <div className="md:col-span-5 relative z-10">
-      <div className="relative group">
-        <img 
-          src="/images/Untitled-1 (1).jpg" 
-          className="w-full shadow-2xl transform -rotate-1 group-hover:rotate-0 transition-transform duration-700 border border-white/10" 
-          alt="KISS Poster"
-        />
-        {/* Subtle glow behind poster */}
-        <div className="absolute -inset-4 bg-[#fef9c3]/5 blur-3xl -z-10 rounded-full"></div>
-      </div>
-    </div>
-
-    {/* RIGHT SIDE: THE TEXT */}
-    <div className="md:col-span-7 relative">
-      {/* Background Title Peeking Out - Artistic Depth */}
-      <h1 className="absolute -top-16 -left-16 text-[15vw] font-serif italic text-[#fef9c3]/5 select-none pointer-events-none z-0 leading-none">
-        KISS
-      </h1>
-      
-      <div className="relative z-10 space-y-8">
-        <div>
-           <h2 className="text-[10px] uppercase tracking-[0.6em] text-[#fef9c3]/60 mb-4">Art Exhibition</h2>
-           <h3 className="text-4xl md:text-6xl font-serif italic text-[#fef9c3] leading-tight">Redefining the <br/>Narrative</h3>
-        </div>
-
-        <div className="space-y-6 text-lg leading-relaxed font-light opacity-90">
-          <p>
-            This exhibition brings together five artists to dismantle the dominant, heteronormative "ideal" of romance that has long silenced diverse voices. By challenging the binary patriarchal structures of our society, these works shift the focus toward narratives that have been historically marginalized and rendered invisible.
-          </p>
-          <p className="italic border-l border-[#fef9c3]/30 pl-6">
-            KISS is an invitation to witness love in its most authentic forms—where the act of intimacy becomes a path to healing, self-discovery, and total freedom.
-          </p>
-        </div>
-        
-        <div className="pt-6 border-t border-white/10">
-          <p className="font-serif text-[#fef9c3] tracking-[0.4em] text-sm italic">— ANNA REXHA</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
         {/* DAMP MEMORIES FOREST - ACTIVE DIGITAL PROJECT */}
 <section className="py-12 px-6 md:px-14 border-t border-[#D6D4A1]/10 bg-[#0a0f0a]/40 relative overflow-hidden group cursor-pointer">
   {/* 1. Ambient Background Mist Effect */}
@@ -814,6 +767,37 @@ const members: Member[] = [
           [ {activeProject ? 'back to list' : 'close'} ]
         </button>
       </div>
+      
+      {activeFragment === 'ART & WORKSHOPS' && (
+  <section className="relative py-24 px-6">
+    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+      
+      {/* POSTER */}
+      <div className="md:col-span-5">
+        <img 
+          src="/images/Untitled-1 (1).jpg" 
+          className="w-full shadow-2xl transform -rotate-1" 
+          alt="KISS Poster"
+        />
+      </div>
+
+      {/* INTRO TEXT */}
+      <div className="md:col-span-7 relative">
+        <h1 className="absolute -top-20 -left-10 text-[12vw] font-serif italic text-[#fef9c3]/5 z-0">
+          KISS
+        </h1>
+        <div className="relative z-10 space-y-6">
+          <h2 className="text-4xl font-serif italic text-[#fef9c3]">Redefining the Narrative</h2>
+          <p className="text-lg font-light opacity-90">
+            This exhibition brings together five artists to dismantle the dominant, heteronormative "ideal" of romance...
+          </p>
+          <p className="pt-4 font-serif text-[#fef9c3] tracking-widest">— ANNA REXHA</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+)}
 
       {/* Intro text (Hides when a story is open) */}
       {!activeProject && (
