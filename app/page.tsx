@@ -13,6 +13,7 @@ interface Member {
   img: string;
 }
 export default function CvrcleFinal() {
+  
   const [activeProject, setActiveProject] = useState(null);
   const [showManifesto, setShowManifesto] = useState(false);
   const [showFullDetails, setShowFullDetails] = useState(false);
@@ -195,8 +196,12 @@ const members: Member[] = [
         {
           title: `Learning Boredom`,
           date: `Summer 2026`,
-          content: `Summer project by Anna exploring the generative nature of stillness.`,
-          img: "/images/boredom.jpg",
+          content: `Learn How to Do Nothing is a social-impact artistic project designed for the 4SEASONS: Summer 2026 framework in the Minett region of Luxembourg.
+          
+          In an era of constant digital stimulation and "burnout culture," this project reclaims inactivity as a vital skill. The core of the project involves installing "Analogue Islands"—monumental wooden benches crafted from certified sustainable timber—strategically placed in busy urban centers like Esch-sur-Alzette and Differdange.
+          
+          These benches act as "vessels of presence" where the public is invited to sit, put away their phones, and engage in the simple, profound act of doing nothing. Beyond a public installation, the project features targeted mediation for vulnerable youth (Classes Mosaïque), using the "Right to Boredom" as a tool to rebuild attention spans, foster mental well-being, and reconnect individuals with the physical world and natural cycles.`,
+          img: "/learning-boredom.png",
           collection: `Summer Project`
         }
       ]
@@ -262,14 +267,136 @@ const members: Member[] = [
       text: `A collective archive of poetic explorations and shared narratives from the members.,`,
       // Add 'list: [' here
       list: [
+
         {
-          title: `Message on a Paper Butterfly`,
-          content: `We exchanged butterflies instead of kisses.`,
-          collection: `Landscape of Broken Hearts`,
-          img: "paper-butterfly.jpg",
-          effect: `butterflies`
-        }
-      ] // Close it with ']'
+            title: "Fall Before Spring Hits the Ground",
+            titleCN: "五月，春天在很大程度上占领了我的嘴巴",
+            author: "Shulin Xia",
+            collection: "2025.06",
+            img: "/fall-before-spring-poem.jpg",
+            effect: "petals",
+            content: (
+              <div className="grid grid-cols-2 gap-8 text-left font-serif leading-relaxed py-4">
+                {/* --- CHINESE COLUMN --- */}
+                <div className="text-[14px] space-y-6 opacity-100 border-r border-white/10 pr-6 text-right">
+                  <div>
+                    <p>五月，春天在很大程度上占领了我的嘴巴</p>
+                    <p>我张口闭口谈起春天</p>
+                    <p>这位亲爱的 相识而不相知的旧友</p>
+                    <p>这位爱开玩笑的</p>
+                    <p>却总在子夜中</p>
+                    <p>叩开我黑寂的梦</p>
+                  </div>
+                  <div>
+                    <p>那是些独属春天的梦境</p>
+                    <p>爬满柔和与清冽的藤蔓</p>
+                  </div>
+                  <div>
+                    <p>伴随着它似是而非的论述</p>
+                    <p>我似懂非懂。点头之间</p>
+                    <p>融化的液滴</p>
+                    <p>未曾停下它的潜行</p>
+                    <p>向每一位存在和尚未存在的</p>
+                  </div>
+                  <div>
+                    <p>更多时候，我们的交谈</p>
+                    <p>系挂于花语的沉默</p>
+                    <p>和锈迹斑斑的虫鸣之上</p>
+                    <p>春天如此健谈</p>
+                    <p>它永远充盈，轻松，风光无限</p>
+                    <p>而它眼前的我</p>
+                    <p>更像是一位失魂落魄的人</p>
+                  </div>
+                  <div>
+                    <p>越过春天吧</p>
+                    <p>越过它的主宰</p>
+                    <p>但它的身后是绿 障目的绿</p>
+                    <p>垂悬的叶瓣遮蔽着</p>
+                    <p>早熟的果实</p>
+                    <p>和无数颗鼓胀到疼痛的心脏</p>
+                    <p>在绿的尽头，</p>
+                    <p>躲着一个透明的我</p>
+                  </div>
+                </div>
+          
+                {/* --- ENGLISH COLUMN --- */}
+                <div className="text-[15px] space-y-6 opacity-95 pl-2">
+                  <div>
+                    <p>In May, Spring largely occupied my mouth;</p>
+                    <p>I spoke of nothing but Spring.</p>
+                    <p>This dear, old friend—</p>
+                    <p>Acquainted, yet never truly known.</p>
+                    <p>This joker,</p>
+                    <p>Who always, in the dead of night,</p>
+                    <p>Knocks open my dark and silent dreams.</p>
+                  </div>
+                  <div>
+                    <p>Those were dreams belonging solely to Spring,</p>
+                    <p>Overgrown with vines, both soft and chilling.</p>
+                  </div>
+                  <div>
+                    <p>Accompanying its ambiguous discourse,</p>
+                    <p>I half-understood, half-doubted. Between my nods,</p>
+                    <p>The melting droplets</p>
+                    <p>Never ceased their stealthy crawl</p>
+                    <p>Toward everyone existing, and those yet to exist.</p>
+                  </div>
+                  <div>
+                    <p>More often, our conversations</p>
+                    <p>Hung upon the silence of flower-language</p>
+                    <p>And the rusted chirping of insects.</p>
+                    <p>Spring is so talkative;</p>
+                    <p>It is forever brimming, effortless, and boundless in its glory.</p>
+                    <p>While I, standing before it,</p>
+                    <p>Look more like a man who has lost his soul.</p>
+                  </div>
+                  <div>
+                    <p>Cross over the Spring;</p>
+                    <p>Cross over its dominion.</p>
+                    <p>But behind it lies green—a blinding, obstructing green.</p>
+                    <p>Hanging petals cast shadows over</p>
+                    <p>Premature fruit</p>
+                    <p>And countless hearts, swollen to the point of pain.</p>
+          <p>At the very end of that green,</p>
+          <p>A transparent "me" lies in hiding.</p>
+        </div>
+
+        {/* THE SIGNATURE */}
+<div className="pt-12 pb-4">
+  <p className="text-[12px] tracking-[0.4em] uppercase opacity-95 italic">
+    — Shulin Xia
+  </p>
+
+        </div>
+      </div>
+    </div>
+  )
+},
+        
+{
+  title: `Message on a Paper Butterfly`,
+  author: "Anna Rexha",
+  collection: `Landscape of Broken Hearts`,
+  author: "Your Name", // Add the author here
+  img: "paper-butterfly.jpg",
+  effect: `butterflies`,
+  content: (
+    <div className="font-serif">
+      {/* The main message */}
+      <p className="text-xl md:text-2xl leading-relaxed opacity-90 italic">
+        "We exchanged butterflies instead of kisses."
+      </p>
+
+      {/* THE SIGNATURE */}
+<div className="pt-12 pb-4">
+  <p className="text-[10px] tracking-[0.4em] uppercase opacity-90 italic">
+    — Anna Rexha
+  </p>
+</div>
+    </div>
+  )
+}
+      ]
     },
     'Articles&Resources': { 
       title: `Fragments: Articles&Resources`, 
@@ -646,7 +773,7 @@ const members: Member[] = [
                  </div>
                </div>
                <p className="text-[10px] uppercase tracking-[0.5em] opacity-90 italic pt-8">
-                 Tracing cultural narratives across Luxembourg.
+                 Tracing cultural narratives across Luxembourg and China.
                </p>
             </div>
           </div>
@@ -721,7 +848,7 @@ const members: Member[] = [
                 <span className="text-[9px] uppercase tracking-widest opacity-95">Archive</span>
                 <span className="text-[10px] opacity-95 font-mono">METZ, FRANCE</span>
               </div>
-              <h4 className="text-3xl md:text-5xl font-serif mb-4 italic opacity-95">Essais Dynamiques</h4>
+              <h4 className="text-3xl md:text-5xl font-serif mb-4 italic opacity-95">DIFFRACTION</h4>
               <p className="text-lg opacity-90 max-w-2xl font-serif mb-6 leading-relaxed">Installation exhibited at Galerie 0.15.</p>
             </div>
           </div>
@@ -731,17 +858,34 @@ const members: Member[] = [
         <section className="py-10 px-6 md:px-14 border-t border-white/5">
           <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-95 mb-12 md:mb-24">Upcoming</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-             <div className="p-6 md:p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
-                <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">May 2026</p>
-                <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Space & Identity</h5>
+          <button 
+  onClick={() => {
+    setActiveProject({
+      title: "Transforming Anger",
+      collection: "Workshop",
+      content: (
+        <div className="font-serif italic text-xl leading-relaxed">
+          Workshop at Rainbow Center: Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy.
+        </div>
+      )
+    });
+    setShowFullDetails(true);
+  }}
+  className="block w-full p-6 md:p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.05] transition-all text-left group cursor-pointer relative z-10"
+>
+  
+
+                <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">Spring 2026</p>
+                <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Transforming Anger</h5>
                 <p className="text-sm opacity-90 font-serif italic leading-relaxed">
-                  New installation series exploring the &quot;Black Sheep&quot; in urban environments.
+                Workshop at Rainbow Center: Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. A participatory experiment on "unfinished actions
                 </p>
-             </div>
+                </button>
+             
              <div className="p-6 md:p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
                 <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">Summer 2026</p>
-                <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Collective Sanctuary</h5>
-                <p className="text-sm opacity-90 font-serif italic leading-relaxed">Residency series focused on textile art and cross-border storytelling.</p>
+                <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Learning Boredom</h5>
+                <p className="text-sm opacity-90 font-serif italic leading-relaxed">Reimagining the urban pause: A sensory experience of disconnection and mental ecology for the 2026 Summer Solstice.</p>
              </div>
           </div>
         </section>
@@ -774,9 +918,20 @@ const members: Member[] = [
     
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8 md:mb-12">
-        <h3 className="text-3xl md:text-6xl font-serif italic text-[#fef9c3]">
-          {activeProject ? (activeProject as any).title : (fragmentData as any)?.title}
-        </h3>
+      <div className="flex flex-col gap-1">
+  {/* Chinese Title */}
+  {activeProject && (activeProject as any).titleCN && (
+    <h3 className="text-xl md:text-3xl font-serif text-[#fef9c3]/80">
+      {(activeProject as any).titleCN}
+    </h3>
+  )}
+  
+  {/* English Title */}
+  <h3 className="text-3xl md:text-6xl font-serif italic text-[#fef9c3]">
+    {activeProject ? (activeProject as any).title : (fragmentData as any)?.title}
+  </h3>
+</div>
+       
         <button 
           onClick={() => {
             if(activeProject && showFullDetails) {
@@ -810,8 +965,21 @@ const members: Member[] = [
                 />
               </div>
               <div className="flex-1 space-y-3">
-                <h3 className="text-2xl font-serif italic text-[#fef9c3]">{item.title}</h3>
-                <p className="text-sm font-light opacity-70 line-clamp-2">{item.content?.substring(0, 150)}...</p>
+              <div className="flex flex-col">
+  {item.titleCN && (
+    <span className="text-sm font-serif opacity-60 mb-1">
+      {item.titleCN}
+    </span>
+  )}
+  <h3 className="text-2xl font-serif italic text-[#fef9c3]">
+    {item.title}
+  </h3>
+</div>
+                <p className="text-sm font-light opacity-70 line-clamp-2">
+  {typeof item.content === 'string' 
+    ? item.content.substring(0, 150) 
+    : "A dual-language poem."}
+</p>
                 <span className="text-[9px] uppercase tracking-[0.3em] text-[#fef9c3]/60 group-hover:text-[#fef9c3]">View +</span>
               </div>
             </button>
@@ -947,7 +1115,9 @@ const members: Member[] = [
         </div>
         <div className="md:w-1/2 space-y-10 overflow-y-auto pr-4 custom-scroll">
           <section>
-            <h4 className="text-[10px] uppercase tracking-[0.4em] text-[#D6D4A1] mb-6">Full Biography</h4>
+          <h4 className="text-[10px] tracking-[0.3em] uppercase opacity-50 mb-8">
+  {activeProject.collection || "Full Biography"}
+</h4>
       
             
             
@@ -955,6 +1125,7 @@ const members: Member[] = [
               <p>{activeProject.content}</p>
             </div>
           </section>
+          {activeProject.archives && (
           <section className="border-t border-white/10 pt-10">
             <h4 className="text-[10px] uppercase tracking-[0.4em] text-[#D6D4A1] mb-8">Archive Chapters</h4>
             <div className="space-y-8">
@@ -966,6 +1137,7 @@ const members: Member[] = [
               ))}
             </div>
           </section>
+          )}
         </div>
       </div>
     )}

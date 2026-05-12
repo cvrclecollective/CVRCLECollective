@@ -4,20 +4,20 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 16, 40, 16; 
+  /* Slightly lighter deep green */
+  --background-rgb: 8, 18, 8; 
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #102810; 
+  background: #081208; /* This is our new target shade */
   overflow-x: hidden;
 }
 
 @layer base {
   ::-webkit-scrollbar-track {
-    background: #102810; 
+    background: #081208; 
   }
-
 }
   ::-webkit-scrollbar-thumb {
     background: #222222; /* Subtle dark handle */
@@ -44,3 +44,4 @@ body {
 .custom-scroll::-webkit-scrollbar {
   width: 3px;
 }
+
