@@ -15,6 +15,7 @@ interface Member {
 export default function CvrcleFinal() {
   const [activeProject, setActiveProject] = useState(null);
   const [showManifesto, setShowManifesto] = useState(false);
+  const [showFullDetails, setShowFullDetails] = useState(false);
   const phrases = [
     `Beyond borders. Between forms.`,
     `Iwwer d'Grenzen eraus. Tëscht de Formen.`,
@@ -167,22 +168,29 @@ const members: Member[] = [
           collection: "Ongoing"
         },
         {
-          title: `Damp Memories Forest`,
-          subtitle: `ACTIVE DIGITAL PROJECT`,
-          date: `Summer 2026`,
-          content: `Summer project by Shulin (coordinator) and Anna (creator).`,
+          title: 'Transforming Anger',
+          date: 'Spring 2026',
+          content: 'A participatory workshop series focused on the alchemical transformation of emotion into art.',
+          quote: "A space where anger is expressed, torn apart, and artistically recomposed.",
+          img: '/springposter.jpeg', // Make sure this matches your teaser image
+          collection: "Active Cycle",
+          // These are required so the full view doesn't crash when mapping chapters
+          projects: [
+            { title: 'Methodology', desc: 'The three-stage alchemical process.' },
+            { title: 'Location', desc: 'Rainbow Center, Luxembourg.' }
+          ]
+        },
+        {
+          title: 'Damp Memories Forest',
+          date: 'PILOT STAGE 2026',
+          thumbnail: '/damp-forest-sketch.png',
+          content: `A participatory digital ecosystem transforming diary-writing into an evolving visual forest. Focusing on the notion of dampness—memories that resist resolution and emotions that linger like internal weather.`,
           quote: "Write something that never dried.",
-          description: `A participatory digital ecosystem transforming diary-writing into an evolving visual forest. Focusing on the notion of dampness—memories that resist resolution and emotions that linger like internal weather.`,
-          zones: [
-            `WET ZONE (BLUR & OVERLAP)`,
-            `OPEN FIELD (GROWTH & VISIBILITY)`,
-            `SHADOW AREA (CONCEALMENT)`
-          ],
-          img: "/damp-forest-sketch.png",
-          status: `STATUS: PILOT STAGE`,
-          format: `FORMAT: ASYNCHRONOUS WHITEBOARD`,
-          phase: `PHASE: 2026 COLLECTIVE ARCHIVE`,
-          collection: `Summer Project`
+          zones: ['Wet Zone (blur & overlap)', 'Open Field (growth & visibility)', 'Shadow Area (concealment)'],
+          status: 'Pilot Stage',
+          format: 'Asynchronous Whiteboard',
+          phase: '2026 Collective Archive',
+          img: '/damp-forest-sketch.png'
         },
         {
           title: `Learning Boredom`,
@@ -196,34 +204,38 @@ const members: Member[] = [
     
     'ART & WORKSHOPS': {
       title: `Fragments: Artistic Work`,
-      text: `KISS: Redefining the Narrative. This exhibition brings together five artists to dismantle the dominant, heteronormative "ideal" of romance. Through photography, painting, and scenography, the artists explore the KISS as a complex act of resistance and reclamation. — Anna Rexha`,
+      text: `Here are gathered fragments that we've kep traces of throughout our artistic&cutlural projects and woorkshops. Have a look at our memories. :)" — Anna Rexha`,
       list: [
-            {
-              title: 'KISS',
-              poster: '/images/Untitled-1 (1).jpg', // Reference the poster file here
-              artist: 'Ani Nikogosyan, Yumeng Fang, CHARLIE, Kassia, Anna Rexha',                
-              // Grouping the images into two distinct sets
-            preparations: ["/images/artwork1.jpg", "/images/artwork2.jpg", "/images/artwork3.jpg"],
-            vernissage: ["/images/artwork4.jpg", "/images/artwork5.jpg", "/images/artwork6.jpg"],
-            type: 'Queer Exhibition',
-            collection: '"Kissollective", curated by Anna Rexha'
-          },
-          {
-            title: 'Sensory Mapping Workshop',
-            artist: 'Led by Anna Rexha',
-            content: 'An immersive session exploring the intersection of collective memory and soundscapes. Participants will map their own "fragments" of memory through physical media.',
-            img: "/images/workshop-cover.jpg",
-            type: "Workshop",
-            collection: "Part of the KISS educational series"
-          },
+        
         {
-          title: `Audio Piece Name`,
-          artist: `Artist Name`,
-          content: `Description of the soundscape.`,
-          img: "/images/audio-cover.jpg",
-          type: "Sound",
-          collection: "Artistic Fragments"
-        }
+          title: 'DIFFRACTION',
+          date: 'MAY 2025',
+          artist: 'Ani Nikogosyan, Anna Rexha',
+          content: `DIFFRACTION est une installation artistique collaborative qui explore les thèmes du féminisme, de la migration, de l'appartenance en élaborant le concept de la diffraction.`, 
+          img: '/diffraction1.jpeg',
+          quote: "Archive Record",
+          type: 'Art Exhibition',
+          collection: 'Galerie 0.15, Metz',
+          projects: [
+            { title: 'Concept', desc: 'Exploration of feminism and migration.' },
+            { title: 'Installation', desc: 'Collaborative physical setup.' }
+          ] 
+    },
+        {
+                title: 'KISS',
+                date: 'MAY 2026',
+                artist: 'Ani Nikogosyan, Yumeng Fang, CHARLIE, Kassia, Anna Rexha',
+                content: `KISS: Redefining the Narrative`, 
+                img: '/poster-kiss.png',
+                quote: '"Kissollective", curated by Anna Rexha',
+                type: 'Queer Exhibition',
+            collection: 'Rainbow Center, Luxembourg',
+            projects: [
+              { title: 'Concept', desc: 'This exhibition brings together five artists to dismantle the dominant, heteronormative ideal of romance that has long silenced diverse voices. By challenging the binary patriarchal structures of our society, these works shift the focus toward narratives that have been historically marginalized and rendered invisible. Through photography, painting, and scenography, the artists explore the KISS as a complex act of resistance, vulnerability, and reclamation. From the secret intimacy of queer love in restricted spaces to the physical memory of trauma and the catharsis of gender affirmation, this collection offers a radical new perspective on connection. KISS is an invitation to witness love in its most authentic forms—where the act of intimacy becomes a path to healing, self-discovery, and total freedom.' },
+              { title: 'Installation', desc: 'Collaborative physical setup.' }
+            ] 
+          },
+         
       ]
     },
 
@@ -583,13 +595,16 @@ const members: Member[] = [
             />
           </div>
           {/* Floating Label */}
-          <div className="absolute bottom-7 left-2 md:-left-5 bg-black/20 border border-[#D6D4A1]/20 p-3 max-w-[160px] z-20">
-  <p className="text-[10px] uppercase tracking-[0.2em] leading-relaxed opacity-70 font-sans">
-              Status: Pilot Stage <br/>
-              Format: Asynchronous Whiteboard <br/>
-              Phase: 2026 Collective Archive
-            </p>
-          </div>
+          {activeProject && activeProject.title === "Damp Memories Forest" && (
+  <div className="absolute bottom-7 left-2 md:-left-5 bg-black/20 border border-[#D6D4A1]/20 p-3 max-w-[160px] z-20 text-left">
+    <p className="text-[10px] uppercase tracking-[0.2em] leading-relaxed opacity-70 font-sans text-[#D6D4A1]">
+      Status: {activeProject.status} <br/>
+      Format: {activeProject.format} <br/>
+      Phase: {activeProject.phase}
+    </p>
+  </div>
+)}
+        
         </div>
       </div> {/* Closes Right Column */}
 
@@ -741,119 +756,225 @@ const members: Member[] = [
         </footer>
       </div>
 
-      {/* --- 7. OVERLAY: STORYTELLING & LISTS --- */}
+    {/* --- 7. OVERLAY: STORYTELLING & LISTS --- */}
 {activeFragment && (
   <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
     {/* Background Overlay */}
     <div 
       className="absolute inset-0 bg-black/80 backdrop-blur-md" 
-      onClick={() => activeProject ? setActiveProject(null) : setActiveFragment(null)}
+      onClick={() => {
+        setActiveProject(null);
+        setActiveFragment(null);
+        setShowFullDetails(false); // Resets the view when you click outside
+      }}
     ></div>
 
     {/* Modal Container */}
     <div className="relative bg-[#080808] border border-white/10 w-full max-w-5xl p-5 md:p-16 overflow-y-auto max-h-[90vh] custom-scroll">
     
-      {/* Header Section: Title & Back Button */}
+      {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8 md:mb-12">
         <h3 className="text-3xl md:text-6xl font-serif italic text-[#fef9c3]">
-
-        {activeProject ? (activeProject as any).title : (fragmentData as any)?.title}
-</h3>
-        
+          {activeProject ? (activeProject as any).title : (fragmentData as any)?.title}
+        </h3>
         <button 
-          onClick={() => activeProject ? setActiveProject(null) : setActiveFragment(null)} 
+          onClick={() => {
+            if(activeProject && showFullDetails) {
+                setShowFullDetails(false);
+            } else if (activeProject) {
+                setActiveProject(null);
+            } else {
+                setActiveFragment(null);
+            }
+          }} 
           className="text-[10px] uppercase tracking-widest opacity-95 hover:opacity-100"
         >
-          [ {activeProject ? 'back to list' : 'close'} ]
+          [ {showFullDetails ? '←' : activeProject ? '←' : '✕'} ]
         </button>
       </div>
-      
-      {activeFragment === 'ART & WORKSHOPS' && (
-  <section className="relative py-24 px-6">
-    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-      
-      {/* POSTER */}
-      <div className="md:col-span-5">
-        <img 
-          src="/images/Untitled-1 (1).jpg" 
-          className="w-full shadow-2xl transform -rotate-1" 
-          alt="KISS Poster"
-        />
-      </div>
 
-      {/* INTRO TEXT */}
-      <div className="md:col-span-7 relative">
-        <h1 className="absolute -top-20 -left-10 text-[12vw] font-serif italic text-[#fef9c3]/5 z-0">
-          KISS
-        </h1>
-        <div className="relative z-10 space-y-6">
-          <h2 className="text-4xl font-serif italic text-[#fef9c3]">Redefining the Narrative</h2>
-          <p className="text-lg font-light opacity-90">
-            This exhibition brings together five artists to dismantle the dominant, heteronormative "ideal" of romance...
-          </p>
-          <p className="pt-4 font-serif text-[#fef9c3] tracking-widest">— ANNA REXHA</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-)}
-
-      {/* Intro text (Hides when a story is open) */}
-      {!activeProject && (
-        <p className="text-lg md:text-xl mb-8 md:mb-12 opacity-80 font-serif leading-relaxed italic max-w-2xl">
-          {fragmentData?.text || ''}
-        </p>
-        
-      )}
-
-      {/* Main Content Area */}
-{activeProject ? (
-  /* Inside the Story/Project */
-  <div className="animate-fade-in py-6 md:py-10">
-    {/* This container handles the Left (Text) and Right (Image) layout */}
-    <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-      
-      {/* LEFT SIDE: The Story Text */}
-      <div className="flex-[1.5] text-lg md:text-xl opacity-80 leading-relaxed font-serif">
-        {activeProject.content}
-      </div>
-
-      {/* RIGHT SIDE: The Image(s) */}
-      {activeProject.img && (
-        <div className="flex-1 w-full mt-8 md:mt-0">
-          <img
-            src={activeProject.img} 
-            alt={activeProject.title} 
-            className="w-full h-auto object-cover" 
-          />
+      {/* CASE 1: THE GALLERY LIST */}
+      {!activeProject && fragmentData.list && (
+        <div className="space-y-12 mt-12 border-t border-white/10 pt-12">
+          {fragmentData.list.map((item: any) => (
+            <button 
+              key={item.title}
+              onClick={() => setActiveProject(item)}
+              className="group w-full flex flex-col md:flex-row items-center gap-8 border-b border-white/10 pb-12 hover:border-[#fef9c3]/40 transition-colors text-left"
+            >
+              <div className="w-full md:w-1/3 overflow-hidden">
+                <img 
+                  src={item.thumbnail || item.img || item.poster} 
+                  className="w-full aspect-video object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  alt={item.title}
+                />
+              </div>
+              <div className="flex-1 space-y-3">
+                <h3 className="text-2xl font-serif italic text-[#fef9c3]">{item.title}</h3>
+                <p className="text-sm font-light opacity-70 line-clamp-2">{item.content?.substring(0, 150)}...</p>
+                <span className="text-[9px] uppercase tracking-[0.3em] text-[#fef9c3]/60 group-hover:text-[#fef9c3]">View +</span>
+              </div>
+            </button>
+          ))}
         </div>
       )}
 
-    </div>
-  </div>
-) : (
-  /* ... rest of your list logic ... */
-
-        /* The List of Stories/Projects */
-        fragmentContent[activeFragment].list && (
-          <div className="space-y-4 md:space-y-6 border-t border-white/10 pt-6 md:pt-8">
-            {fragmentContent[activeFragment].list.map((poem, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveProject(poem)}
-                className="block w-full text-left hover:text-[#D6D4A1] transition-all italic font-serif text-2xl group"
-              >
-                <span className="opacity-70 group-hover:opacity-100 mr-4 transition-opacity">—</span>
-                {poem.title}
-              </button>
-            ))}
+     {/* --- CASE 2: THE PROJECT VIEW (EXACT MAIN PAGE MIRROR) --- */}
+{activeProject && (
+  <div className="animate-fade-in w-full">
+    {/* 1. SPECIAL CASE: TRANSFORMING ANGER (Keeps Teaser/Full Toggle) */}
+    {activeProject.title === "Transforming Anger" ? (
+      !showFullDetails ? (
+        /* --- ANGER TEASER BUTTON --- */
+        <button 
+          onClick={() => setShowFullDetails(true)}
+          className="w-full text-left border border-[#D6D4A1]/20 p-6 md:p-10 bg-[#D6D4A1]/[0.03] group transition-all hover:border-[#D6D4A1]/60 hover:bg-[#D6D4A1]/[0.05] cursor-pointer"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+            <div className="md:col-span-5 h-full flex items-center overflow-hidden">
+              <img src="/springposter.jpeg" alt="Spring Poster" className="w-full h-auto" />
+            </div>
+            <div className="md:col-span-7 space-y-6 mt-6 md:mt-0">
+              <div className="flex items-center gap-4">
+                <span className="px-3 py-1 border border-[#D6D4A1]/40 text-[9px] uppercase tracking-widest rounded-full text-[#D6D4A1]">Active Cycle: Spring 2026</span>
+              </div>
+              <h4 className="text-2xl md:text-4xl font-serif italic text-white">Transforming Anger / The Inner Child's Voice</h4>
+              <div className="space-y-2 font-serif text-xl opacity-90 text-[#D6D4A1]">
+                <p>RAINBOW CENTER</p>
+                <p className="text-sm opacity-80 uppercase tracking-widest text-white">19 Rue du Saint Esprit, 1475 Luxembourg</p>
+                <p className="text-base pt-4 opacity-80 underline underline-offset-4 decoration-[#D6D4A1]/30 text-white">May 23rd, 2026 — 15h00</p>
+              </div>
+              <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl text-[#D6D4A1]">
+                &quot;A space where anger is expressed, torn apart, and artistically recomposed.&quot;
+              </p>
+              <div className="pt-4">
+                <span className="text-[10px] uppercase tracking-[0.5em] border-b border-[#D6D4A1]/30 pb-2 group-hover:border-[#D6D4A1] transition-all text-white">Click to explore the process →</span>
+              </div>
+            </div>
           </div>
-        )
-      )}
-    </div>
+        </button>
+      ) : (
+        /* --- ANGER FULL VIEW (PROCESS & METHODOLOGY) --- */
+        <div className="relative bg-[#080808] border border-[#D6D4A1]/20 w-full p-6 md:p-14 overflow-y-auto text-left">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-16 border-b border-white/5 pb-10">
+            <div className="space-y-4">
+              <p className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1]">Workshop Proposal — Spring 2026</p>
+              <h3 className="text-3xl md:text-6xl font-serif italic tracking-tight text-white">Transforming Anger</h3>
+              <p className="text-base md:text-lg font-serif opacity-70 text-[#D6D4A1]">CVRCLE x RAINBOW CENTER | Luxembourg</p>
+            </div>
+            <button onClick={() => setShowFullDetails(false)} className="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white hover:text-black transition-all text-white"> ← </button>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+            <div className="space-y-16">
+              <div className="space-y-6">
+                <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4 text-white">The Methodology</h5>
+                <p className="opacity-70 font-serif text-lg leading-relaxed text-[#D6D4A1]">
+                  Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. The workshop follows a three-stage alchemical process.
+                </p>
+              </div>
+              <div className="space-y-10">
+                <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4 text-white">The Process</h5>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="space-y-3 font-serif">
+                    <span className="text-[#D6D4A1] text-[10px] tracking-widest uppercase font-sans">I. Expression</span>
+                    <p className="text-xs opacity-50 text-white">Physicalizing the emotion through raw materials.</p>
+                  </div>
+                  <div className="space-y-3 font-serif">
+                    <span className="text-[#D6D4A1] text-[10px] tracking-widest uppercase font-sans">II. Destruction</span>
+                    <p className="text-xs opacity-50 text-white">Breaking down the form to release its grip.</p>
+                  </div>
+                  <div className="space-y-3 font-serif">
+                    <span className="text-[#D6D4A1] text-[10px] tracking-widest uppercase font-sans">III. Recomposition</span>
+                    <p className="text-xs opacity-50 text-white">Using the fragments to build a new visual narrative.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    ) : activeProject.title === "Damp Memories Forest" ? (
+      /* --- 2. SPECIAL CASE: FOREST TEASER SECTION --- */
+      <section className="py-12 px-6 md:px-14 border border-[#D6D4A1]/10 bg-[#0a0f0a]/40 relative overflow-hidden group text-left">
+        <div className="absolute inset-0 pointer-events-none opacity-50 animate-mist bg-gradient-to-r from-transparent via-[#D6D4A1]/5 to-transparent blur-3xl" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1] mb-8">Active Digital Project</h2>
+                <h3 className="text-3xl md:text-6xl font-serif mb-6 italic leading-tight text-white">Damp Memories <br/>Forest</h3>
+                <p className="text-xl font-serif opacity-80 leading-relaxed italic border-l border-[#D6D4A1]/20 pl-4 md:pl-8 text-[#D6D4A1]">
+                  &quot;{activeProject.quote}&quot;
+                </p>
+              </div>
+              <div className="space-y-6 text-lg opacity-90 font-serif leading-relaxed text-white">
+                <p>{activeProject.content}</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
+                  {(activeProject.zones || []).map((zone: string) => (
+                    <div key={zone} className="flex items-center gap-4 text-[11px] md:text-[10px] uppercase tracking-widest opacity-60">
+                      <span className="w-8 h-px bg-[#D6D4A1]/40"></span> {zone}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="relative flex justify-center items-center mt-12 md:mt-0">
+              <div className="relative w-full max-w-[280px] md:max-w-[320px]">
+                <div className="h-full overflow-hidden opacity-80 shadow-2xl">
+                  <img src={activeProject.img} alt={activeProject.title} className="w-full h-full object-contain" />
+                </div>
+                <div className="absolute bottom-7 left-2 md:-left-5 bg-black/20 border border-[#D6D4A1]/20 p-3 max-w-[160px] z-20 text-left">
+                  <p className="text-[10px] uppercase tracking-[0.2em] leading-relaxed opacity-70 font-sans text-[#D6D4A1]">
+                    Status: {activeProject.status} <br/>
+                    Format: {activeProject.format} <br/>
+                    Phase: {activeProject.phase}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    ) : (
+      /* --- 3. ALL OTHER PROJECTS: IMMEDIATE FULL ARCHIVE VIEW (No Teaser/No Button) --- */
+      <div className="animate-fade-in flex flex-col md:flex-row gap-12 h-full text-left">
+        <div className="md:w-1/2 h-[400px] md:h-auto relative">
+        <img 
+  src={activeProject.img} 
+  alt={activeProject.title}
+  className="w-full h-auto opacity-100 grayscale-0 border border-white/10 object-cover" 
+/>
+        </div>
+        <div className="md:w-1/2 space-y-10 overflow-y-auto pr-4 custom-scroll">
+          <section>
+            <h4 className="text-[10px] uppercase tracking-[0.4em] text-[#D6D4A1] mb-6">Full Biography</h4>
+      
+            
+            
+            <div className="text-lg font-serif opacity-70 leading-relaxed space-y-4">
+              <p>{activeProject.content}</p>
+            </div>
+          </section>
+          <section className="border-t border-white/10 pt-10">
+            <h4 className="text-[10px] uppercase tracking-[0.4em] text-[#D6D4A1] mb-8">Archive Chapters</h4>
+            <div className="space-y-8">
+              {activeProject.projects?.map((item: any) => (
+                <div key={item.title} className="group border-b border-white/5 pb-6">
+                  <p className="text-xl font-serif italic text-[#D6D4A1]/80 group-hover:text-white transition-all">{item.title}</p>
+                  <p className="text-sm opacity-50 font-serif mt-1">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
+    )}
   </div>
 )}
+  </div>
+  </div>
+)}
+
 
       {/* WORKSHOP MODAL */}
       {activeWorkshop && (
@@ -866,7 +987,7 @@ const members: Member[] = [
                 <h3 className="text-3xl md:text-6xl font-serif italic tracking-tight">Transforming Anger</h3>
                 <p className="text-base md:text-lg font-serif opacity-70">CVRCLE x RAINBOW CENTER | Luxembourg</p>
               </div>
-              <button onClick={() => setActiveWorkshop(false)} className="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white hover:text-black transition-all">[ Close ]</button>
+              <button onClick={() => setActiveWorkshop(false)} className="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white hover:text-black transition-all"> ✕ </button>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
               <div className="space-y-8 lg:space-y-16">
@@ -957,7 +1078,7 @@ The final piece becomes a visual trace of transformation rather than destruction
                     <h4 className="text-4xl md:text-8xl font-serif italic">{activeMember.name}</h4>
                     <p className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1]">{activeMember.title}</p>
                   </div>
-                  <button onClick={() => setActiveMember(null)} className="text-[10px] uppercase tracking-[0.5em]">[ Close ]</button>
+                  <button onClick={() => setActiveMember(null)} className="text-[10px] uppercase tracking-[0.5em]"> ✕ </button>
                 </div>
                 <div className="space-y-6">
                    <h5 className="text-[11px] uppercase tracking-[0.4em] opacity-70 border-b border-white/5 pb-2">Full Biography</h5>

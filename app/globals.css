@@ -3,25 +3,45 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 255, 255, 255;
+  /* This creates that veryyyy dark emerald forest vibe */
+  --background-rgb: 4, 8, 4; 
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #040804; /* Matches the Deep Emerald but darker */
+  overflow-x: hidden;
+}
+
+/* Update your scrollbar track to match! */
+@layer base {
+  ::-webkit-scrollbar-track {
+    background: #040804; 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #222222; /* Subtle dark handle */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D6D4A1; /* Highlights in your theme gold color */
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #222222 #000000;
+  }
+}
+
+/* Custom class for the biography scroll areas */
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #222222 #000000;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 3px;
 }
