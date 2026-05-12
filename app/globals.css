@@ -4,22 +4,21 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  /* This creates that veryyyy dark emerald forest vibe */
-  --background-rgb: 4, 8, 4; 
+  --background-rgb: 16, 40, 16; 
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #040804; /* Matches the Deep Emerald but darker */
+  background: #102810; 
   overflow-x: hidden;
 }
 
-/* Update your scrollbar track to match! */
 @layer base {
   ::-webkit-scrollbar-track {
-    background: #040804; 
+    background: #102810; 
   }
 
+}
   ::-webkit-scrollbar-thumb {
     background: #222222; /* Subtle dark handle */
     border-radius: 10px;
@@ -34,7 +33,7 @@ body {
     scrollbar-width: thin;
     scrollbar-color: #222222 #000000;
   }
-}
+
 
 /* Custom class for the biography scroll areas */
 .custom-scroll {
