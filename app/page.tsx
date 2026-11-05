@@ -234,7 +234,7 @@ The project grows through several forms: a book of thoughts, a digital artwork, 
         },
         {
           title: 'KISS',
-          date: 'MAY 2026',
+          date: 'November-April 2023-24',
           artist: 'Ani Nikogosyan, Yumeng Fang, CHARLIE, Kassia, Anna Rexha',
           content: `KISS: Redefining the Narrative`,
           img: '/poster-kiss.png',
