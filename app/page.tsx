@@ -14,7 +14,7 @@ interface Member {
 }
 export default function CvrcleFinal() {
   
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProject, setActiveProject] = useState<any>(null);
   const [showManifesto, setShowManifesto] = useState(false);
   const [showFullDetails, setShowFullDetails] = useState(false);
   const phrases = [
@@ -40,78 +40,65 @@ export default function CvrcleFinal() {
   const [activeWorkshop, setActiveWorkshop] = useState<boolean>(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [activeFragment, setActiveFragment] = useState<string | null>(null);
-  const [mounted, setMounted] = useState(false);
+
   const [activePoem, setActivePoem] = useState<any>(null);
 
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+ 
 
   useEffect(() => {
-    if (!mounted) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-
+  
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
     const circles: { x: number; y: number; r: number; a: number }[] = [];
-
+    let rafId = 0;
+  
     const onMove = (e: MouseEvent) => {
       circles.push({ x: e.clientX, y: e.clientY, r: 8 + Math.random() * 8, a: 0.3 });
     };
-
+    const onTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (!touch) return;
+      circles.push({ x: touch.clientX, y: touch.clientY, r: 4 + Math.random() * 8, a: 0.3 });
+    };
     const onResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-
-    const onTouchMove = (e: any) => { // Use 'any' if 'TouchEvent' gives an error
-      const onTouchMove = (e: any) => {
-        // Line 68 was here - DELETE IT
-        const touch = e.touches[0];
-        circles.push({ x: touch.clientX, y: touch.clientY, r: 4 + Math.random() * 8, a: 0.3 });
-      };
-      const touch = e.touches[0];
-
-      circles.push({ x: touch.clientX, y: touch.clientY, r: 4 + Math.random() * 8, a: 0.3 });
-    };
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
+  
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("resize", onResize);
-
+  
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < circles.length; i++) {
+      for (let i = circles.length - 1; i >= 0; i--) {
         const c = circles[i];
         c.a -= 0.007;
         c.r += 0.3;
-        if (c.a <= 0) { circles.splice(i, 1); i--; continue; }
+        if (c.a <= 0) { circles.splice(i, 1); continue; }
         ctx.beginPath();
         ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(214, 212, 161, ${c.a})`; 
+        ctx.strokeStyle = `rgba(214, 212, 161, ${c.a})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
-
     animate();
+  
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("resize", onResize);
       window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("resize", onResize);
     };
-  }, [mounted]);
+  }, []);
 
-  <p 
-  key={currentPhrase} 
-  className="text-[#D6D4A1] font-serif italic text-lg md:text-2xl opacity-80 animate-fade-in"
->
-  {phrases[currentPhrase]}
-</p>
 
 const members: Member[] = [
   {
@@ -153,7 +140,18 @@ const members: Member[] = [
       ],
       insta: "https://www.instagram.com/ani_nkgsn/",
       img: "/ani.jpg" 
-    }
+    },
+    {
+      name: `Miriam Wolf`,
+      pronouns: `(she/her)`,
+      title: `Illustrator & Visual Identity Designer`,
+      role: `Multidisciplinary Artist & Illustrator`,
+      bio: `A French multidisciplinary artist and illustrator working across many mediums, especially watercolor and pencil. Miriam constantly experiments with forms, shapes and techniques, practicing daily and recreating the world she sees through her own eyes when she is outdoors. A fairy of nature and darkness, she can draw a delicate flower as easily as she can summon Lilith of the valley. Within CVRCLE, she creates the illustrations and graphic identity of our posters, posts and flyers, and offers her eye on the collective's visual direction.`,
+      projects: [],
+      insta: "https://www.instagram.com/hokomojo/",
+      img: "/miriam.jpeg"
+    },
+    
   ];
 
   const fragmentContent: Record<string, { title: string, text: string, list?: any[] }> = {
@@ -162,25 +160,29 @@ const members: Member[] = [
       text: `Current explorations and collective movements.`,
       list: [
         {
+          title: `The Destinies of What Remains`,
+          date: `Ongoing research`,
+          content: `A research project led by Anna Rexha. It begins with a broken vase and the fear of becoming less, and asks what happens to things after they change: who decides what is whole, what is defective, and what is worth keeping.
+
+The project grows through several forms: a book of thoughts, a digital artwork, a research paper, a porcelain workshop and a set of postcards that travel. Members of CVRCLE contribute to different parts of it.`,
+          img: "/destinies-cover.png",
+          collection: `Research project · Led by Anna Rexha`,
+          projects: [
+            { title: `Shards (book)`, desc: `Finished. A livre d'artiste of thoughts written during a painful period, with images by Miriam Wolf and Ani Nikogosyan.` },
+            { title: `The Destinies of What Remains (research paper)`, desc: `In progress. A paper in several parts on porcelain, visibility and the value of being.` },
+            { title: `The digital artwork`, desc: `Finished, and edited from time to time. A place outside the body where fragments can exist. soul-ten-weld.vercel.app` },
+            { title: `Porcelain workshop and movable atelier`, desc: `Planned. Making porcelain in public, in different places, so the process is part of the exhibition. Practice not yet started.` },
+            { title: `Postcard workshop`, desc: `Upcoming, 14 November, Ningbo. Visitors choose a fragment of writing and decide who to give it to.` }
+          ]
+        },
+        {
           title: `Sunday`,
           date: `Ongoing`,
           content: `A recurring space for collective artistic practice and exploration.`,
           img: "/sunday-art.png",
           collection: "Ongoing"
         },
-        {
-          title: 'Transforming Anger',
-          date: 'Spring 2026',
-          content: 'A participatory workshop series focused on the alchemical transformation of emotion into art.',
-          quote: "A space where anger is expressed, torn apart, and artistically recomposed.",
-          img: '/springposter.jpeg', // Make sure this matches your teaser image
-          collection: "Active Cycle",
-          // These are required so the full view doesn't crash when mapping chapters
-          projects: [
-            { title: 'Methodology', desc: 'The three-stage alchemical process.' },
-            { title: 'Location', desc: 'Rainbow Center, Luxembourg.' }
-          ]
-        },
+        
         {
           title: 'Damp Memories Forest',
           date: 'PILOT STAGE 2026',
@@ -193,30 +195,34 @@ const members: Member[] = [
           phase: '2026 Collective Archive',
           img: '/damp-forest-sketch.png'
         },
-        {
-          title: `Learning Boredom`,
-          date: `Summer 2026`,
-          content: `Learn How to Do Nothing is a social-impact artistic project designed for the 4SEASONS: Summer 2026 framework in the Minett region of Luxembourg.
-          
-          In an era of constant digital stimulation and "burnout culture," this project reclaims inactivity as a vital skill. The core of the project involves installing "Analogue Islands"—monumental wooden benches crafted from certified sustainable timber—strategically placed in busy urban centers like Esch-sur-Alzette and Differdange.
-          
-          These benches act as "vessels of presence" where the public is invited to sit, put away their phones, and engage in the simple, profound act of doing nothing. Beyond a public installation, the project features targeted mediation for vulnerable youth (Classes Mosaïque), using the "Right to Boredom" as a tool to rebuild attention spans, foster mental well-being, and reconnect individuals with the physical world and natural cycles.`,
-          img: "/learning-boredom.png",
-          collection: `Summer Project`
-        }
+        
       ]
     },
     
-    'ART & WORKSHOPS': {
-      title: `Fragments: Artistic Work`,
-      text: `Here are gathered fragments that we've kep traces of throughout our artistic&cutlural projects and woorkshops. Have a look at our memories. :)" — Anna Rexha`,
+    'Art': {
+      title: `Fragments: Art`,
+      text: `Here are gathered fragments that we've kept traces of throughout our artistic projects. Have a look at our memories. :) — Anna Rexha`,
       list: [
-        
+        {
+          title: 'Role Models',
+          showPress: true,
+          date: 'SEPT 2025 – JAN 2026',
+          artist: 'CVRCLE Collective',
+          content: `A project celebrating LGBTQIA+ visibility as a form of cultural strength, made in partnership with BLOM ASBL and the European EPBN WISE initiative. As an artistic collective, CVRCLE understands role models as bearers of stories that should be made visible, shared, and archived.`,
+          img: '/role-models.jpg',
+          quote: 'Each trophy combines a solid structure with a textile component.',
+          type: 'Project',
+          collection: 'Luxembourg · Co-funded by the EU EPBN',
+          projects: [
+            { title: 'The trophies', desc: 'Awards for the first Luxembourg edition 2026 of the EPBN LGBTQIA+ & Allies Role Models Awards, combining a solid structure with a textile component.' },
+            
+          ]
+        },
         {
           title: 'DIFFRACTION',
           date: 'MAY 2025',
           artist: 'Ani Nikogosyan, Anna Rexha',
-          content: `DIFFRACTION est une installation artistique collaborative qui explore les thèmes du féminisme, de la migration, de l'appartenance en élaborant le concept de la diffraction.`, 
+          content: `DIFFRACTION est une installation artistique collaborative qui explore les thèmes du féminisme, de la migration, de l'appartenance en élaborant le concept de la diffraction.`,
           img: '/diffraction1.jpeg',
           quote: "Archive Record",
           type: 'Art Exhibition',
@@ -224,29 +230,43 @@ const members: Member[] = [
           projects: [
             { title: 'Concept', desc: 'Exploration of feminism and migration.' },
             { title: 'Installation', desc: 'Collaborative physical setup.' }
-          ] 
-    },
+          ]
+        },
         {
-                title: 'KISS',
-                date: 'MAY 2026',
-                artist: 'Ani Nikogosyan, Yumeng Fang, CHARLIE, Kassia, Anna Rexha',
-                content: `KISS: Redefining the Narrative`, 
-                img: '/poster-kiss.png',
-                quote: '"Kissollective", curated by Anna Rexha',
-                type: 'Queer Exhibition',
-            collection: 'Rainbow Center, Luxembourg',
-            projects: [
-              { title: 'Concept', desc: 'This exhibition brings together five artists to dismantle the dominant, heteronormative ideal of romance that has long silenced diverse voices. By challenging the binary patriarchal structures of our society, these works shift the focus toward narratives that have been historically marginalized and rendered invisible. Through photography, painting, and scenography, the artists explore the KISS as a complex act of resistance, vulnerability, and reclamation. From the secret intimacy of queer love in restricted spaces to the physical memory of trauma and the catharsis of gender affirmation, this collection offers a radical new perspective on connection. KISS is an invitation to witness love in its most authentic forms—where the act of intimacy becomes a path to healing, self-discovery, and total freedom.' },
-              { title: 'Installation', desc: 'Collaborative physical setup.' }
-            ] 
-          },
-         
-      ]
+          title: 'KISS',
+          date: 'MAY 2026',
+          artist: 'Ani Nikogosyan, Yumeng Fang, CHARLIE, Kassia, Anna Rexha',
+          content: `KISS: Redefining the Narrative`,
+          img: '/poster-kiss.png',
+          quote: '"Kissollective", curated by Anna Rexha',
+          type: 'Queer Exhibition',
+          collection: 'Rainbow Center, Luxembourg',
+          projects: [
+            { title: 'Concept', desc: 'This exhibition brings together five artists to dismantle the dominant, heteronormative ideal of romance that has long silenced diverse voices. By challenging the binary patriarchal structures of our society, these works shift the focus toward narratives that have been historically marginalized and rendered invisible. Through photography, painting, and scenography, the artists explore the KISS as a complex act of resistance, vulnerability, and reclamation. From the secret intimacy of queer love in restricted spaces to the physical memory of trauma and the catharsis of gender affirmation, this collection offers a radical new perspective on connection. KISS is an invitation to witness love in its most authentic forms—where the act of intimacy becomes a path to healing, self-discovery, and total freedom.' },
+            { title: 'Installation', desc: 'Collaborative physical setup.' }
+          ]
+        },
+             ]
     },
 
-    'Archivartism': {
-      title: `Fragments: Archivartiste`,
-      text: `The artist as a collector of living archives. We do not look for history in books, but in the voices and stories shared directly by people.`
+    'Workshops': {
+      title: `Fragments: Workshops`,
+      text: `Traces of the workshops we have held, where the making is shared with the people who take part.`,
+      list: [
+        {
+          title: 'Inner-child: Anger Workshop',
+          date: 'MAY 2026',
+          content: 'A participatory workshop series focused on the alchemical transformation of emotion into art.',
+          quote: "A space where anger is expressed, torn apart, and artistically recomposed.",
+          img: '/springposter.jpeg',
+          type: 'Workshop',
+          collection: 'Rainbow Center, Luxembourg',
+          projects: [
+            { title: 'Methodology', desc: 'The three-stage alchemical process.' },
+            { title: 'Location', desc: 'Rainbow Center, Luxembourg.' }
+          ]
+        },
+      ]
     },
     'Storytelling': { 
       title: `Fragments: Storytelling`, 
@@ -377,8 +397,7 @@ const members: Member[] = [
   title: `Message on a Paper Butterfly`,
   author: "Anna Rexha",
   collection: `Landscape of Broken Hearts`,
-  author: "Your Name", // Add the author here
-  img: "paper-butterfly.jpg",
+  img: "/paper-butterfly.jpg",
   effect: `butterflies`,
   content: (
     <div className="font-serif">
@@ -398,7 +417,7 @@ const members: Member[] = [
 }
       ]
     },
-    'Articles&Resources': { 
+    'Articles & Resources': { 
       title: `Fragments: Articles&Resources`, 
       text: `Long-form reflections on artivism and identity.` 
     }, 
@@ -422,10 +441,127 @@ const members: Member[] = [
     }
   ];
 
-  if (!mounted) return <div className="bg-[#050505] min-h-screen" />;
+  interface Project {
+    title: string;
+    kind: string;        // "Workshop", "Exhibition", "Digital project"...
+    place: string;
+    start: string;       // "YYYY-MM-DD"
+    end?: string;        // "YYYY-MM-DD", leave out for one-day events
+    ongoing?: boolean;   // true = never moves to Past
+    dateLabel: string;   // what visitors see, e.g. "May 23, 2026"
+    blurb: string;
+    note?: string;       // optional extra line, e.g. funding
+    archive?: string;
+  }
+  
+  const projects: Project[] = [
+    {
+      title: `Sunday`,
+      kind: `Recurring practice`,
+      place: `Luxembourg`,
+      start: `2026-01-01`, // set the real start date
+      ongoing: true,
+      dateLabel: `Ongoing`,
+      blurb: `A recurring space for collective artistic practice and exploration.`,
+    },
+    {
+      title: `Inner-child: Anger Workshop`,
+      kind: `Workshop`,
+      place: `Rainbow Center, Luxembourg`,
+      start: `2026-05-23`,
+      dateLabel: `May 23, 2026`,
+      blurb: `A participatory workshop on turning anger into art: expressed, torn apart, and artistically recomposed.`,
+      archive: `Inner-child: Anger Workshop`,
+    },
+    {
+      title: `KISS: Redefining the Narrative`,
+      kind: `Queer exhibition`,
+      place: `Rainbow Center, Luxembourg`,
+      start: `2026-05-01`, // set the real dates
+      end: `2026-05-31`,
+      dateLabel: `May 2026`,
+      blurb: `Five artists dismantle the heteronormative ideal of romance, exploring the kiss as an act of resistance, vulnerability and reclamation.`,
+      archive: `KISS`,
+    },
+    {
+      title: `Learning Boredom`,
+      kind: `Social-impact project`,
+      place: `Minett region, Luxembourg`,
+      start: `2026-06-21`, // set the real dates
+      dateLabel: `Summer 2026`,
+      blurb: `"Analogue Islands": monumental wooden benches inviting the public to sit and do nothing.`,
+      archive: `Learning Boredom`,
+    },
+    {
+      title: `Role Models`,
+      kind: `Project`,
+      place: `Luxembourg`,
+      start: `2025-09-01`, // set the real dates
+      end: `2026-01-31`,
+      dateLabel: `Completed Jan 2026`,
+      blurb: `In partnership with BLOM ASBL & the European EPBN WISE initiative. A project celebrating LGBTQIA+ visibility as a form of cultural strength.`,
+      note: `Co-funded by the EU EPBN`,
+      archive: `Role Models`
+    },
+    {
+      title: `DIFFRACTION`,
+      kind: `Installation`,
+      place: `Galerie 0.15, Metz`,
+      start: `2025-05-01`, // set the real dates
+      end: `2025-05-31`,
+      dateLabel: `May 2025`,
+      blurb: `A collaborative installation on feminism, migration and belonging, built around the concept of diffraction.`,
+      archive: `DIFFRACTION`,
+    },
+  ];
+  
+  const now = new Date();
+  const statusOf = (p: Project): "upcoming" | "current" | "past" => {
+    if (p.ongoing) return "current";
+    const start = new Date(`${p.start}T00:00:00`);
+    const end = new Date(`${p.end ?? p.start}T23:59:59`);
+    if (now < start) return "upcoming";
+    if (now > end) return "past";
+    return "current";
+  };
+  
+  const upcomingProjects = projects
+    .filter((p) => statusOf(p) === "upcoming")
+    .sort((a, b) => a.start.localeCompare(b.start));
+  
+  const pastProjects = projects
+    .filter((p) => statusOf(p) === "past")
+    .sort((a, b) => (b.end ?? b.start).localeCompare(a.end ?? a.start));
+
+  
 
 
   const fragmentData = (fragmentContent as any)[activeFragment || 'Fragments'];
+  const fragmentKeys = Object.keys(fragmentContent);
+const leftKeys = fragmentKeys.slice(0, 3);
+const rightKeys = fragmentKeys.slice(3);
+const openArchive = (title: string) => {
+  for (const [key, value] of Object.entries(fragmentContent)) {
+    const entry = value.list?.find((p: any) => p.title === title);
+    if (entry) {
+      setActiveFragment(key);
+      setActiveProject(entry);
+      setShowFullDetails(false);
+      return;
+    }
+  }
+};
+
+const FragmentLink = ({ item, onSelect }: { item: string; onSelect: (item: string) => void }) => (
+  <button
+    onClick={() => onSelect(item)}
+    className="group relative w-full py-3 md:py-4 px-3 bg-[#050505] transition-all hover:bg-white/[0.03]"
+  >
+    <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] opacity-70 group-hover:opacity-100">
+      {item}
+    </span>
+  </button>
+);
 
   return (
     <>
@@ -460,130 +596,142 @@ const members: Member[] = [
 
     
 <main className="min-h-screen bg-[#080808] text-[#fef9c3] selection:bg-white/10">
-        {/* FIXED CSS BLOCK */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
-        body { margin: 0; background-color: #050505; cursor: crosshair; overflow-x: hidden; }
-        .font-serif { font-family: 'Cormorant Garamond', serif; }
         
-        @keyframes flutter {
-          0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
-          10% { opacity: 0.8; }
-          90% { opacity: 0.8; }
-          100% { transform: translateY(-20vh) translateX(30px) rotate(360deg); opacity: 0; }
-        }
-        
-        .butterfly-particle {
-          position: fixed;
-          pointer-events: none;
-          z-index: 200;
-          animation: flutter 10s linear infinite;
-          font-size: 16px; md:font-size: 24px;
-          color: #D6D4A1;
-          filter: sepia(1) saturate(0.5); /* This makes them look like aged paper */
-        }
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 0.8; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 1.2s ease-out forwards;
-        }
-
-        @keyframes heartbeat {
-          0% { transform: scale(1) translateY(0); }
-          25% { transform: scale(1.06) translateY(-4px); }
-          35% { transform: scale(1.02) translateY(-4px); }
-          45% { transform: scale(1.12) translateY(-12px); }
-          100% { transform: scale(1) translateY(0); }
-        }
-
-        .animate-heartbeat {
-          animation: heartbeat 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        /* Add inside your <style> block */
-@keyframes mist-drift {
-  0% { opacity: 0.3; transform: translateX(-5px) scale(1); }
-  50% { opacity: 0.5; transform: translateX(10px) scale(1.05); }
-  100% { opacity: 0.3; transform: translateX(-5px) scale(1); }
-}
-
-.animate-mist {
-  animation: mist-drift 8s ease-in-out infinite;
-}
-
-.blur-layer {
-  backdrop-filter: blur(8px);
-  mask-image: linear-gradient(to bottom, transparent, black, transparent);
-}
-      `}} />
 
       <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-[60]" />
 
       <div className={`relative z-10 transition-all duration-700 ${activeFragment ? 'blur-xl scale-[0.98] opacity-85' : ''}`}>
         
         
-        {/* 1. HERO SECTION */}
-        <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 py-12 md:py-20">
-          <div className="relative group mb-12">
-            <div 
-              className="w-48 h-48 md:w-[350px] md:h-[350px] bg-[#D6D4A1] opacity-90 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-100 animate-heartbeat"
-              style={{
-                maskImage: 'url("/logo.png")',
-                WebkitMaskImage: 'url("/logo.png")',
-                maskSize: 'contain',
-                WebkitMaskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                WebkitMaskRepeat: 'no-repeat',
-                maskPosition: 'center',
-                WebkitMaskPosition: 'center'
-              }}
-            />
-          </div>
+        {/* {/* 1. HERO SECTION */}
+<section className="min-h-screen px-6 py-24 md:py-20 flex flex-col justify-center">
+  <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] gap-x-6 gap-y-12 items-center">
 
-          <div className="flex flex-col items-center justify-center min-h-[6rem] md:min-h-[4rem]">
-  <p 
-    key={currentPhrase} 
-    className="text-[#D6D4A1] font-serif italic text-xl md:text-2xl opacity-80 animate-fade-in text-center"
-  >
-    {phrases[currentPhrase]}
-  </p>
-  <div className="flex flex-col items-center mt-12">
-  <button 
-    onClick={() => setShowManifesto(!showManifesto)}
-    className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-[#D6D4A1]/20 px-6 py-3 hover:bg-[#D6D4A1] hover:text-black transition-all duration-700"
-  >
-    {showManifesto ? 'Close' : 'Read Manifesto'}
-  </button>
+    {/* CENTER: logo + phrase */}
+    <div className="col-span-2 md:col-span-1 order-1 md:order-2 flex flex-col items-center text-center">
+      <div className="relative group mb-12">
+        <div
+          className="w-48 h-48 md:w-[350px] md:h-[350px] bg-[#D6D4A1] opacity-90 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-100 animate-heartbeat"
+          style={{
+            maskImage: 'url("/logo.png")',
+            WebkitMaskImage: 'url("/logo.png")',
+            maskSize: 'contain',
+            WebkitMaskSize: 'contain',
+            maskRepeat: 'no-repeat',
+            WebkitMaskRepeat: 'no-repeat',
+            maskPosition: 'center',
+            WebkitMaskPosition: 'center'
+          }}
+        />
+      </div>
+      <p
+        key={currentPhrase}
+        className="text-[#D6D4A1] font-serif italic text-xl md:text-2xl opacity-80 animate-fade-in text-center min-h-[4rem]"
+      >
+        {phrases[currentPhrase]}
+      </p>
+    </div>
 
-  <div className={`overflow-hidden transition-all duration-1000 ease-in-out ${showManifesto ? 'max-h-[1200px] opacity-100 mt-16' : 'max-h-0 opacity-0'}`}>
-    <div className="max-w-2xl text-center space-y-4 text-[#D6D4A1]/90 font-serif leading-relaxed px-6 italic mx-auto pb-20">
-      <p>We are CVRCLE Collective, a multicultural and multidisciplinary group of artists and cultural workers exploring what exists in the in-between: between places, memories, identities, and narratives.</p>
-      <p>Our practice emerges from migration stories, from the margins, from the voices that have been silenced or overlooked. Through video, textile, sound, installation, and image, we create spaces of care and visibility where stories can be held, shared, and transformed.</p>
-      <p>As a collective, we believe in art as a bridge: between people, between worlds, between the seen and the unseen.</p>
-      <p>We weave together our backgrounds, our practices, and our communities to make room for narratives that resist erasure.</p>
-      <p>CVRCLE is a space of resonance. A place where the invisible becomes visible. Where the unheard is amplified. Where the margins find form.</p>
-      <p className="not-italic uppercase tracking-[0.3em] text-[11px] pt-4">Welcome to our circle.</p>
+   {/* LEFT */}
+<nav aria-label="Fragments, part 1" className="order-2 md:order-1 grid grid-cols-1 gap-px bg-white/10 border border-white/10 w-full max-w-[180px] justify-self-start">
+{leftKeys.map((item) => <FragmentLink key={item} item={item} onSelect={setActiveFragment} />)}
+</nav>
+
+{/* RIGHT */}
+<nav aria-label="Fragments, part 2" className="order-3 grid grid-cols-1 gap-px bg-white/10 border border-white/10 w-full max-w-[180px] justify-self-end">
+{rightKeys.map((item) => <FragmentLink key={item} item={item} onSelect={setActiveFragment} />)}
+</nav>
+
+  </div>
+
+  {/* MANIFESTO */}
+  <div className="flex flex-col items-center mt-16">
+    <button
+      onClick={() => setShowManifesto(!showManifesto)}
+      className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-[#D6D4A1]/20 px-6 py-3 hover:bg-[#D6D4A1] hover:text-black transition-all duration-700"
+    >
+      {showManifesto ? 'Close' : 'Read Manifesto'}
+    </button>
+
+    <div className={`overflow-hidden transition-all duration-1000 ease-in-out ${showManifesto ? 'max-h-[2000px] opacity-100 mt-16' : 'max-h-0 opacity-0'}`}>
+      <div className="max-w-2xl text-center space-y-4 text-[#D6D4A1]/90 font-serif leading-relaxed px-6 italic mx-auto pb-20">
+        <p>We are CVRCLE Collective, a multicultural and multidisciplinary group of artists and cultural workers exploring what exists in the in-between: between places, memories, identities, and narratives.</p>
+        <p>Our practice emerges from migration stories, from the margins, from the voices that have been silenced or overlooked. Through video, textile, sound, installation, and image, we create spaces of care and visibility where stories can be held, shared, and transformed.</p>
+        <p>As a collective, we believe in art as a bridge: between people, between worlds, between the seen and the unseen.</p>
+        <p>We weave together our backgrounds, our practices, and our communities to make room for narratives that resist erasure.</p>
+        <p>CVRCLE is a space of resonance. A place where the invisible becomes visible. Where the unheard is amplified. Where the margins find form.</p>
+        <p className="not-italic uppercase tracking-[0.3em] text-[11px] pt-4">Welcome to our circle.</p>
+      </div>
     </div>
   </div>
-</div>
-</div>
-        </section>
+</section>
 
- {/* 2. THEORETICAL FRAGMENTS */}
- <section id="grid-section" className="py-20 md:py-40 px-6 md:px-24 border-t border-white/5 bg-white/[0.01]">
-          <h2 className="text-[10px] uppercase tracking-[0.3em] md:tracking-[0.6em] opacity-95 mb-12 md:mb-24 text-center">Theoretical Fragments</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            {Object.keys(fragmentContent).map((item) => (
-              <button key={item} onClick={() => setActiveFragment(item)}
-                className="group relative py-8 md:py-10 bg-[#050505] transition-all hover:bg-white/[0.03]">
-                <span className="text-[10px] uppercase tracking-[0.5em] opacity-70 group-hover:opacity-100">{item}</span>
-              </button>
-            ))}
-          </div>
-        </section>
+ 
+                {/* CURRENT RESEARCH PROJECT */}
+<section id="research" className="scroll-mt-24 py-12 px-6 md:px-14 border-t border-[#D6D4A1]/10 bg-white/[0.01]">
+  <div className="max-w-5xl mx-auto">
+    <h2 className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1] mb-8">Current Research Project</h2>
+    <h3 className="text-3xl md:text-6xl font-serif mb-6 italic leading-tight">The Destinies of What Remains</h3>
+    <p className="text-xl font-serif opacity-80 leading-relaxed italic border-l border-[#D6D4A1]/20 pl-4 md:pl-8 max-w-3xl">
+      What happens to things after they change? Who decides what is whole, what is defective, and what is worth keeping?
+    </p>
+    <p className="mt-8 text-lg opacity-90 font-serif leading-relaxed max-w-3xl">
+      A research project led by Anna Rexha, starting from a broken vase and the fear of becoming less. It grows through writing, a book, a digital artwork, porcelain and postcards, with members of CVRCLE working on different parts.
+    </p>
 
+    {/* DIGITAL ARTWORK SCREENSHOT */}
+    <a
+      href="https://soul-ten-weld.vercel.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group mt-12 block border border-white/10 hover:border-[#D6D4A1]/40 transition-all duration-700"
+    >
+      <img
+        src="/destinies-cover.png"
+        alt="Screenshot of the digital artwork"
+        className="w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+      />
+      <span className="block p-4 text-[10px] uppercase tracking-[0.4em] text-[#D6D4A1]/80 group-hover:text-[#D6D4A1]">
+        The digital artwork · Visit the site →
+      </span>
+    </a>
+
+    {/* THE SIX PARTS */}
+    <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+      {[
+        { part: 'Shards', kind: 'A book of thoughts with images & illustrations by Miriam Wolf and Ani Nikogosyan', status: 'In progress' },
+        { part: 'Research paper', kind: 'Porcelain, visibility, and the value of being', status: 'In progress' },
+        { part: 'Digital artwork', kind: 'A place for fragments outside the body', status: 'Finished', link: 'https://soul-ten-weld.vercel.app/', linkLabel: 'Visit the site' },
+        { part: 'Porcelain workshop', kind: 'A movable atelier', status: 'Planned' },
+        { part: 'Postcard workshop', kind: 'WAS gallery, Ningbo, 14 November', status: 'Upcoming' },
+        { part: 'Performance', kind: 'Giving the Work a Body', status: 'In progress' },
+      ].map((item) => (
+        <div key={item.part} className="bg-[#050505] p-6 flex flex-col">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#D6D4A1] mb-3">{item.status}</p>
+          <p className="text-2xl font-serif italic">{item.part}</p>
+          <p className="text-base opacity-70 font-serif mt-1">{item.kind}</p>
+          {item.link && (
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 self-start text-[10px] uppercase tracking-[0.4em] border-b border-[#D6D4A1]/30 pb-1 hover:border-[#D6D4A1] transition-all"
+            >
+              {item.linkLabel} →
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <button
+      onClick={() => openArchive('The Destinies of What Remains')}
+      className="mt-12 text-[11px] uppercase tracking-[0.5em] border border-[#D6D4A1]/20 px-6 md:px-8 py-4 hover:bg-[#D6D4A1] hover:text-black transition-all duration-700"
+    >
+      Explore the project →
+    </button>
+  </div>
+</section>
         {/* 4SEASONS UMBRELLA PROJECT */}
         <section id="4seasons" className="scroll-mt-24 py-22 px-6 md:px-24 border-t border-[#D6D4A1]/10 bg-white/[0.01]">
           <div className="max-w-6xl mx-auto">
@@ -613,46 +761,12 @@ const members: Member[] = [
               </div>
             </div>
 
-            <button 
-              onClick={() => setActiveWorkshop(true)}
-              className="w-full text-left border border-[#D6D4A1]/20 p-6 md:p-10 bg-[#D6D4A1]/[0.03] group transition-all hover:border-[#D6D4A1]/60 hover:bg-[#D6D4A1]/[0.05] cursor-pointer"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-                <div className="md:col-span-5 h-full flex items-center overflow-hidden">
-                <img 
-  src="/springposter.jpeg" 
-  alt="Spring Poster"
-  width={500}   // Add this
-  height={750}  // Add this
-/>
-                </div>
-                <div className="md:col-span-7 space-y-6 mt-6 md:mt-0">
-                  <div className="flex items-center gap-4">
-                    <span className="px-3 py-1 border border-[#D6D4A1]/40 text-[9px] uppercase tracking-widest rounded-full">Active Cycle: Spring 2026</span>
-                  </div>
-                  <h4 className="text-2xl md:text-4xl font-serif italic group-hover:text-white transition-colors">
-                    Transforming Anger / The Inner Child &apos; s Voice
-                  </h4>
-                  <div className="space-y-2 font-serif text-xl opacity-90">
-                    <p className="tracking-wide">RAINBOW CENTER</p>
-                    <p className="text-sm opacity-80 uppercase tracking-widest">19 Rue du Saint Esprit, 1475 Luxembourg</p>
-                    <p className="text-base pt-4 opacity-80 underline underline-offset-4 decoration-[#D6D4A1]/30">May 23rd, 2026 — 15h00</p>
-                  </div>
-                  <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">
-                    &quot;A space where anger is expressed, torn apart, and artistically recomposed - transforming emotional rupture into creative renewal.&quot;
-                  </p>
-                  <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">Facilitated by: Anna Rexha</p>
-                  <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl">Created by: Shulin Xia</p>
-                  <div className="pt-4">
-                    <span className="text-[10px] uppercase tracking-[0.5em] border-b border-[#D6D4A1]/30 pb-2 group-hover:border-[#D6D4A1] transition-all">Click to explore the process →</span>
-                  </div>
-                </div>
-              </div>
-            </button>
+            
           </div>
         </section>
 
-        {/* DAMP MEMORIES FOREST - ACTIVE DIGITAL PROJECT */}
+         {/* DAMP MEMORIES FOREST - ACTIVE DIGITAL PROJECT */}
+        
 <section className="py-12 px-6 md:px-14 border-t border-[#D6D4A1]/10 bg-[#0a0f0a]/40 relative overflow-hidden group cursor-pointer">
   {/* 1. Ambient Background Mist Effect */}
   <div className="absolute inset-0 pointer-events-none opacity-50 animate-mist bg-gradient-to-r from-transparent via-[#D6D4A1]/5 to-transparent blur-3xl" />
@@ -702,7 +816,7 @@ const members: Member[] = [
               { title: `The Link`, desc: `Coming Soon...` }
             ],
             insta: "cvrcle.collective",
-            img: "damp-forest-sketch.png"
+            img: "/damp-forest-sketch.png"
           })}
           className="text-[10px] uppercase tracking-[0.5em] border border-[#D6D4A1]/20 px-4 md:px-8 py-4 hover:bg-[#D6D4A1] hover:text-black transition-all duration-700"
         >
@@ -821,81 +935,65 @@ const members: Member[] = [
         </section>
 
         {/* 4. PAST PROJECTS */}
-        <section className="py-20 px-6 md:px-14 border-t border-white/5 bg-white/[0.01]">
-          <h2 className="text-[10px] uppercase tracking-[0.3em] md:tracking-[0.6em] opacity-95 mb-12 md:mb-24">Past Projects</h2>
-          <div className="space-y-12">
-            <div className="group border border-white/10 p-5 md:p-12 hover:border-[#D6D4A1]/30 transition-all duration-700 bg-zinc-900/10">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-                <div className="flex items-center gap-4">
-                  <span className="px-3 py-1 border border-white/20 text-[9px] uppercase tracking-widest rounded-full opacity-90">Completed Jan 2026</span>
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-4 bg-[#003399] flex items-center justify-center rounded-[1px]">
-                      <span className="text-[6px] text-[#FFCC00]">★</span>
-                    </div>
-                    <span className="text-[10px] md:text-[8px] uppercase tracking-widest opacity-95">Co-funded by the EU EPBN</span>
-                  </div>
-                </div>
-                <span className="text-[10px] opacity-95 font-mono">LUXEMBOURG</span>
-              </div>
-              <h4 className="text-3xl md:text-5xl font-serif mb-6 opacity-90">Role Models</h4>
-              <p className="text-lg opacity-95 max-w-2xl font-serif italic mb-8 leading-relaxed">
-                In partnership with BLOM ASBL & the European EPBN WISE initiative. 
-                A project celebrating LGBTQIA+ visibility as a form of cultural strength.
-              </p>
-            </div>
-            <div className="group border border-white/10 p-8 md:p-12 hover:border-white/20 transition-all duration-700 bg-black/40">
-              <div className="flex justify-between items-start mb-8">
-                <span className="text-[9px] uppercase tracking-widest opacity-95">Archive</span>
-                <span className="text-[10px] opacity-95 font-mono">METZ, FRANCE</span>
-              </div>
-              <h4 className="text-3xl md:text-5xl font-serif mb-4 italic opacity-95">DIFFRACTION</h4>
-              <p className="text-lg opacity-90 max-w-2xl font-serif mb-6 leading-relaxed">Installation exhibited at Galerie 0.15.</p>
-            </div>
-          </div>
-        </section>
+<section className="py-20 px-6 md:px-14 border-t border-white/5 bg-white/[0.01]">
+  <h2 className="text-[10px] uppercase tracking-[0.3em] md:tracking-[0.6em] opacity-95 mb-12 md:mb-24">Past Projects</h2>
+  <div className="space-y-12">
+    {pastProjects.map((p) => (
+      <div key={p.title} className="group border border-white/10 p-5 md:p-12 hover:border-[#D6D4A1]/30 transition-all duration-700 bg-zinc-900/10">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+          <span className="px-3 py-1 border border-white/20 text-[9px] uppercase tracking-widest rounded-full opacity-90">
+            {p.kind} · {p.dateLabel}
+          </span>
+          <span className="text-[10px] opacity-95 font-mono uppercase">{p.place}</span>
+        </div>
+        <h4 className="text-3xl md:text-5xl font-serif mb-6 italic opacity-90">{p.title}</h4>
+        <p className="text-lg opacity-95 max-w-2xl font-serif italic mb-4 leading-relaxed">{p.blurb}</p>
+        {p.note && (
+          <p className="text-[10px] uppercase tracking-widest opacity-80">{p.note}</p>
+        )}
+                {p.archive && (
+          <button
+            onClick={() => openArchive(p.archive as string)}
+            className="mt-6 block text-[10px] uppercase tracking-[0.5em] border-b border-[#D6D4A1]/30 pb-2 hover:border-[#D6D4A1] transition-all"
+          >
+            See the archive
+          </button>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
 
         {/* 5. UPCOMING */}
-        <section className="py-10 px-6 md:px-14 border-t border-white/5">
-          <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-95 mb-12 md:mb-24">Upcoming</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <button 
-  onClick={() => {
-    setActiveProject({
-      title: "Transforming Anger",
-      collection: "Workshop",
-      content: (
-        <div className="font-serif italic text-xl leading-relaxed">
-          Workshop at Rainbow Center: Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy.
+<section className="py-10 px-6 md:px-14 border-t border-white/5">
+  <h2 className="text-[10px] uppercase tracking-[0.6em] opacity-95 mb-12 md:mb-24">Upcoming</h2>
+  {upcomingProjects.length === 0 ? (
+    <p className="font-serif italic text-lg opacity-80 max-w-xl leading-relaxed">
+      New projects are being woven. Follow us on{" "}
+      <a href="https://www.instagram.com/cvrcle_collective/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-white">
+        Instagram
+      </a>{" "}
+      to hear first.
+    </p>
+  ) : (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {upcomingProjects.map((p) => (
+        <div key={p.title} className="p-6 md:p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
+          <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">{p.dateLabel} · {p.place}</p>
+          <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">{p.title}</h5>
+          <p className="text-sm opacity-90 font-serif italic leading-relaxed">{p.blurb}</p>
         </div>
-      )
-    });
-    setShowFullDetails(true);
-  }}
-  className="block w-full p-6 md:p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.05] transition-all text-left group cursor-pointer relative z-10"
->
-  
-
-                <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">Spring 2026</p>
-                <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Transforming Anger</h5>
-                <p className="text-sm opacity-90 font-serif italic leading-relaxed">
-                Workshop at Rainbow Center: Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. A participatory experiment on "unfinished actions
-                </p>
-                </button>
-             
-             <div className="p-6 md:p-8 border border-white/10 hover:bg-[#D6D4A1]/[0.02] transition-colors">
-                <p className="text-[9px] uppercase tracking-widest opacity-95 mb-2">Summer 2026</p>
-                <h5 className="text-2xl font-serif mb-4 underline underline-offset-8">Learning Boredom</h5>
-                <p className="text-sm opacity-90 font-serif italic leading-relaxed">Reimagining the urban pause: A sensory experience of disconnection and mental ecology for the 2026 Summer Solstice.</p>
-             </div>
-          </div>
-        </section>
+      ))}
+    </div>
+  )}
+</section>
 
         {/* 6. FOOTER */}
         <footer className="py-12 px-6 md:px-24 text-[10px] uppercase tracking-[0.5em] opacity-90 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/10">
           <span>CVRCLE — 2026</span>
           <div className="flex gap-10">
             <a href="https://www.instagram.com/cvrcle_collective/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition z-[70] relative">Instagram</a>
-            <a href="direction-cvrcle.collective@hotmail.com" className="hover:text-white transition z-[70] relative">Contact</a>
+            <a href="mailto:direction-cvrcle.collective@hotmail.com" className="hover:text-white transition z-[70] relative">Contact</a>
           </div>
         </footer>
       </div>
@@ -948,6 +1046,12 @@ const members: Member[] = [
         </button>
       </div>
 
+      {!activeProject && fragmentData?.text && (
+  <p className="max-w-2xl font-serif italic text-lg opacity-80 leading-relaxed">
+    {fragmentData.text}
+  </p>
+)}
+
       {/* CASE 1: THE GALLERY LIST */}
       {!activeProject && fragmentData.list && (
         <div className="space-y-12 mt-12 border-t border-white/10 pt-12">
@@ -990,11 +1094,11 @@ const members: Member[] = [
      {/* --- CASE 2: THE PROJECT VIEW (EXACT MAIN PAGE MIRROR) --- */}
 {activeProject && (
   <div className="animate-fade-in w-full">
-    {/* 1. SPECIAL CASE: TRANSFORMING ANGER (Keeps Teaser/Full Toggle) */}
-    {activeProject.title === "Transforming Anger" ? (
+        {/* 1. SPECIAL CASE: ANGER WORKSHOP */}
+        {activeProject.title === "Inner-child: Anger Workshop" ? (
       !showFullDetails ? (
-        /* --- ANGER TEASER BUTTON --- */
-        <button 
+        /* --- TEASER --- */
+        <button
           onClick={() => setShowFullDetails(true)}
           className="w-full text-left border border-[#D6D4A1]/20 p-6 md:p-10 bg-[#D6D4A1]/[0.03] group transition-all hover:border-[#D6D4A1]/60 hover:bg-[#D6D4A1]/[0.05] cursor-pointer"
         >
@@ -1004,17 +1108,19 @@ const members: Member[] = [
             </div>
             <div className="md:col-span-7 space-y-6 mt-6 md:mt-0">
               <div className="flex items-center gap-4">
-                <span className="px-3 py-1 border border-[#D6D4A1]/40 text-[9px] uppercase tracking-widest rounded-full text-[#D6D4A1]">Active Cycle: Spring 2026</span>
+                <span className="px-3 py-1 border border-[#D6D4A1]/40 text-[9px] uppercase tracking-widest rounded-full text-[#D6D4A1]">Completed: Spring 2026</span>
               </div>
-              <h4 className="text-2xl md:text-4xl font-serif italic text-white">Transforming Anger / The Inner Child's Voice</h4>
+              <h4 className="text-2xl md:text-4xl font-serif italic text-white">Inner-child: Anger Workshop</h4>
               <div className="space-y-2 font-serif text-xl opacity-90 text-[#D6D4A1]">
-                <p>RAINBOW CENTER</p>
+                <p className="tracking-wide">RAINBOW CENTER</p>
                 <p className="text-sm opacity-80 uppercase tracking-widest text-white">19 Rue du Saint Esprit, 1475 Luxembourg</p>
                 <p className="text-base pt-4 opacity-80 underline underline-offset-4 decoration-[#D6D4A1]/30 text-white">May 23rd, 2026 — 15h00</p>
               </div>
               <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl text-[#D6D4A1]">
-                &quot;A space where anger is expressed, torn apart, and artistically recomposed.&quot;
+                &quot;A space where anger is expressed, torn apart, and artistically recomposed - transforming emotional rupture into creative renewal.&quot;
               </p>
+              <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl text-[#D6D4A1]">Facilitated by: Anna Rexha</p>
+              <p className="text-lg opacity-80 leading-relaxed font-serif italic max-w-xl text-[#D6D4A1]">Created by: Shulin Xia</p>
               <div className="pt-4">
                 <span className="text-[10px] uppercase tracking-[0.5em] border-b border-[#D6D4A1]/30 pb-2 group-hover:border-[#D6D4A1] transition-all text-white">Click to explore the process →</span>
               </div>
@@ -1022,40 +1128,81 @@ const members: Member[] = [
           </div>
         </button>
       ) : (
-        /* --- ANGER FULL VIEW (PROCESS & METHODOLOGY) --- */
-        <div className="relative bg-[#080808] border border-[#D6D4A1]/20 w-full p-6 md:p-14 overflow-y-auto text-left">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-16 border-b border-white/5 pb-10">
+        /* --- FULL DETAILED VIEW --- */
+        <div className="relative bg-[#080808] border border-[#D6D4A1]/20 w-full p-6 md:p-14 text-left">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-10 md:mb-16 border-b border-white/5 pb-8 md:pb-10">
             <div className="space-y-4">
-              <p className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1]">Workshop Proposal — Spring 2026</p>
-              <h3 className="text-3xl md:text-6xl font-serif italic tracking-tight text-white">Transforming Anger</h3>
+              <p className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1]">Workshop — Spring 2026</p>
+              <h3 className="text-3xl md:text-6xl font-serif italic tracking-tight text-white">Inner-child: Anger Workshop</h3>
               <p className="text-base md:text-lg font-serif opacity-70 text-[#D6D4A1]">CVRCLE x RAINBOW CENTER | Luxembourg</p>
             </div>
-            <button onClick={() => setShowFullDetails(false)} className="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white hover:text-black transition-all text-white"> ← </button>
+            <button onClick={() => setShowFullDetails(false)} aria-label="Back" className="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white hover:text-black transition-all text-white"> ← </button>
           </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-            <div className="space-y-16">
+            <div className="space-y-8 lg:space-y-16">
               <div className="space-y-6">
                 <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4 text-white">The Methodology</h5>
-                <p className="opacity-70 font-serif text-lg leading-relaxed text-[#D6D4A1]">
-                  Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. The workshop follows a three-stage alchemical process.
+                <p className="opacity-70 font-serif text-base lg:text-lg leading-relaxed text-[#D6D4A1]">
+                  Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. A participatory experiment on &quot;unfinished actions.&quot;
                 </p>
               </div>
-              <div className="space-y-10">
+
+              <div className="mb-10 lg:mb-20">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-1 h-6 bg-[#D6D4A1]" />
+                  <h4 className="text-xs tracking-[0.3em] uppercase opacity-70 text-white">The Prompts</h4>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 italic text-base lg:text-lg font-light opacity-90 pl-4 lg:pl-6 text-[#D6D4A1]">
+                  <div>&apos;I was told to stop being...&apos;</div>
+                  <div>&apos;No one listened when...&apos;</div>
+                  <div>&apos;It felt unfair that...&apos;</div>
+                  <div>&apos;I swallowed my anger when...&apos;</div>
+                  <div>&apos;I wish I had shouted...&apos;</div>
+                  <div>&apos;I wasn&apos;t allowed to...&apos;</div>
+                  <div>&apos;It made me angry when...&apos;</div>
+                  <div>&apos;I wanted to break...&apos;</div>
+                </div>
+              </div>
+
+              <div className="space-y-10 my-10 md:my-16">
                 <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4 text-white">The Process</h5>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="space-y-3 font-serif">
-                    <span className="text-[#D6D4A1] text-[10px] tracking-widest uppercase font-sans">I. Expression</span>
-                    <p className="text-xs opacity-50 text-white">Physicalizing the emotion through raw materials.</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pl-4">
+                  <div className="space-y-3">
+                    <span className="text-[#D6D4A1] text-[10px] uppercase tracking-widest opacity-80 font-sans">I. Expression</span>
+                    <p className="opacity-80 text-sm leading-relaxed font-serif italic text-white">Raw emotional release. Draw, paint, or write freely and without aesthetic judgment. About something that makes one deeply angry, even by simply thinking about it.</p>
                   </div>
-                  <div className="space-y-3 font-serif">
-                    <span className="text-[#D6D4A1] text-[10px] tracking-widest uppercase font-sans">II. Destruction</span>
-                    <p className="text-xs opacity-50 text-white">Breaking down the form to release its grip.</p>
+                  <div className="space-y-3">
+                    <span className="text-[#D6D4A1] text-[10px] uppercase tracking-widest opacity-80 font-sans">II. Destruction</span>
+                    <p className="opacity-80 text-sm leading-relaxed font-serif italic text-white">Tear the paper apart. Physically enact rupture, rejection, or release. This gesture symbolizes: breaking with what hurts, acknowledging emotional intensity, and allowing movement instead of suppression.</p>
                   </div>
-                  <div className="space-y-3 font-serif">
-                    <span className="text-[#D6D4A1] text-[10px] tracking-widest uppercase font-sans">III. Recomposition</span>
-                    <p className="text-xs opacity-50 text-white">Using the fragments to build a new visual narrative.</p>
+                  <div className="space-y-3">
+                    <span className="text-[#D6D4A1] text-[10px] uppercase tracking-widest opacity-80 font-sans">III. Recomposition</span>
+                    <p className="opacity-90 text-sm leading-relaxed font-serif italic text-white">New blank sheet. Using the torn fragments, glue the pieces in a new composition, reshape the narrative of the anger, imagine another possible outcome, transform the emotion into release, distance, or meaning. The final piece becomes a visual trace of transformation rather than destruction.</p>
                   </div>
                 </div>
+              </div>
+
+              <div className="space-y-8 md:space-y-10">
+                <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4 text-white">Sensory Stations</h5>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {['Sound: Childhood ambient triggers', 'Touch: Sandpaper & Ice cubes', 'Smell: Alcohol & Incense ash', 'Movement: Forceful repetition'].map((item) => (
+                    <div key={item} className="p-6 bg-white/[0.03] border border-white/5 font-serif italic text-lg opacity-85 text-white">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-10 lg:space-y-16">
+              <div className="space-y-8">
+                <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4 text-white">Acts of Alteration</h5>
+                <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg font-serif italic opacity-90 text-[#D6D4A1]">
+                  <li className="flex items-start gap-3 lg:gap-4"><span>—</span> <span>Correction fluid: To cover, to create opacity.</span></li>
+                  <li className="flex items-start gap-3 lg:gap-4"><span>—</span> <span>Tear it open: Physically enacting rupture.</span></li>
+                  <li className="flex items-start gap-3 lg:gap-4"><span>—</span> <span>Fingernail scratching: Bringing the body to the surface.</span></li>
+                </ul>
               </div>
             </div>
           </div>
@@ -1121,11 +1268,13 @@ const members: Member[] = [
       
             
             
-            <div className="text-lg font-serif opacity-70 leading-relaxed space-y-4">
-              <p>{activeProject.content}</p>
-            </div>
+<div className="text-lg font-serif opacity-70 leading-relaxed space-y-4">
+  {typeof activeProject.content === 'string'
+    ? <p className="whitespace-pre-line">{activeProject.content}</p>
+    : activeProject.content}
+</div>
           </section>
-          {activeProject.archives && (
+          {activeProject.projects && (
           <section className="border-t border-white/10 pt-10">
             <h4 className="text-[10px] uppercase tracking-[0.4em] text-[#D6D4A1] mb-8">Archive Chapters</h4>
             <div className="space-y-8">
@@ -1137,6 +1286,25 @@ const members: Member[] = [
               ))}
             </div>
           </section>
+           )}
+                     {activeProject.showPress && (
+            <section className="border-t border-white/10 pt-10">
+              <h4 className="text-[10px] uppercase tracking-[0.4em] text-[#D6D4A1] mb-8">In the press</h4>
+              <div className="space-y-6">
+                {pressMentions.map((press, i) => (
+                  <a
+                    key={i}
+                    href={press.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block border-l border-white/10 pl-4 hover:border-[#D6D4A1] transition-all"
+                  >
+                    <span className="block text-lg font-serif italic text-[#D6D4A1]/80 group-hover:text-white transition-colors">{press.source}</span>
+                    <span className="block text-sm opacity-60 font-serif mt-1">{press.title}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
           )}
         </div>
       </div>
@@ -1148,90 +1316,7 @@ const members: Member[] = [
 )}
 
 
-      {/* WORKSHOP MODAL */}
-      {activeWorkshop && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 overflow-y-auto bg-black/95 backdrop-blur-xl">
-          <div className="absolute inset-0 cursor-pointer" onClick={() => setActiveWorkshop(false)}></div>
-          <div className="relative bg-[#080808] border border-[#D6D4A1]/20 w-full max-w-6xl p-6 md:p-20 overflow-y-auto max-h-[90vh]">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-10 md:mb-16 border-b border-white/5 pb-8 md:pb-10">
-              <div className="space-y-4">
-                <p className="text-[10px] uppercase tracking-[0.6em] text-[#D6D4A1]">Workshop Proposal — Spring 2026</p>
-                <h3 className="text-3xl md:text-6xl font-serif italic tracking-tight">Transforming Anger</h3>
-                <p className="text-base md:text-lg font-serif opacity-70">CVRCLE x RAINBOW CENTER | Luxembourg</p>
-              </div>
-              <button onClick={() => setActiveWorkshop(false)} className="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-6 py-2 hover:bg-white hover:text-black transition-all"> ✕ </button>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-              <div className="space-y-8 lg:space-y-16">
-                <div className="space-y-6">
-                  <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4">The Methodology</h5>
-                  <p className="opacity-70 font-serif text-base lg:text-lg leading-relaxed">
-                    Rather than denying anger, we treat it as a signal, a memory, and a source of creative energy. A participatory experiment on &quot;unfinished actions.&quot;
-                  </p>
-                </div>
-                {/* PROMPTS SECTION */}
-<div className="mb-10 lg:mb-20">
-  <div className="flex items-center gap-4 mb-8">
-    <div className="w-1 h-6 bg-[#D6D4A1]" />
-    <h4 className="text-xs tracking-[0.3em] uppercase opacity-70">The Prompts</h4>
-  </div>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 italic text-base lg:text-lg font-light opacity-90 pl-4 lg:pl-6">
-    <div>&apos;I was told to stop being...”</div>
-    <div>&apos;No one listened when...&apos;</div>
-    <div>&apos;It felt unfair that...&apos;</div>
-    <div>&apos;I swallowed my anger when...&apos;</div>
-    <div>&apos;I wish I had shouted...&apos;</div>
-    <div>&apos;I wasn&apos;t allowed to...&apos;</div>
-    <div>&apos;It made me angry when...&apos;</div>
-    <div>&apos;I wanted to break...&apos;</div>
-  </div>
-</div>
-{/* THE PROCESS SECTION */}
-<div className="space-y-10 my-10 md:my-16">
-            <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4">The Process</h5>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pl-4">
-              <div className="space-y-3">
-                <span className="text-[#D6D4A1] text-[10px] uppercase tracking-widest opacity-80 font-sans">I. Expression</span>
-                <p className="opacity-80 text-sm leading-relaxed font-serif italic">Raw emotional release. Draw, paint, or write freely and without aesthetic judgment. About something that makes one deeply angry, even by simply thinking about it.</p>
-              </div>
-              <div className="space-y-3">
-                <span className="text-[#D6D4A1] text-[10px] uppercase tracking-widest opacity-80 font-sans">II. Destruction</span>
-                <p className="opacity-80 text-sm leading-relaxed font-serif italic">Tear the paper apart. Physically enact rupture, rejection, or release. This gesture symbolizes: breaking with what hurts, acknowledging emotional intensity, and allowing movement instead of suppression.</p>
-              </div>
-              <div className="space-y-3">
-                <span className="text-[#D6D4A1] text-[10px] uppercase tracking-widest opacity-80 font-sans">III. Recomposition</span>
-                <p className="opacity-90 text-sm leading-relaxed font-serif italic">New blank sheet. Using the torn fragments, glue the pieces in a new composition, reshape the narrative of the anger,imagine another possible outcome,
-transform the emotion into release, distance, or meaning.
-The final piece becomes a visual trace of transformation rather than destruction.
-</p>
-              </div>
-            </div>
-          </div>
-                <div className="space-y-8 md:space-y-10">
-                  <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4">Sensory Stations</h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {['Sound: Childhood ambient triggers', 'Touch: Sandpaper & Ice cubes', 'Smell: Alcohol & Incense ash', 'Movement: Forceful repetition'].map(item => (
-                      <div key={item} className="p-6 bg-white/[0.03] border border-white/5 font-serif italic text-lg opacity-85">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-10 lg:space-y-16">
-                <div className="space-y-8">
-                  <h5 className="text-[11px] uppercase tracking-[0.4em] border-l-2 border-[#D6D4A1] pl-4">Acts of Alteration</h5>
-                  <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg font-serif italic opacity-90">
-                    <li className="flex items-start gap-3 lg:gap-4"><span>—</span> <span>Correction fluid: To cover, to create opacity.</span></li>
-                    <li className="flex items-start gap-3 lg:gap-4"><span>—</span> <span>Tear it open: Physically enacting rupture.</span></li>
-                    <li className="flex items-start gap-3 lg:gap-4"><span>—</span> <span>Fingernail scratching: Bringing the body to the surface.</span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+     
 
 
 
@@ -1275,9 +1360,9 @@ The final piece becomes a visual trace of transformation rather than destruction
           </div>
       )}
           {/* THE BUTTERFLY EFFECT */}
-{activePoem?.effect === "butterflies" && (
+          {activeProject?.effect === "butterflies" && (
   <div className="fixed inset-0 pointer-events-none overflow-hidden z-[150]">
-    {[...Array(isMobile ? 8 : 15)].map((_, i) => (
+    {[...Array(12)].map((_, i) => (
       <div 
         key={i}
         className="butterfly-particle flex items-center justify-center scale-[0.7] md:scale-100"
