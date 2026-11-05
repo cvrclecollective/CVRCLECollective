@@ -266,6 +266,18 @@ The project grows through several forms: a book of thoughts, a digital artwork, 
             { title: 'Location', desc: 'Rainbow Center, Luxembourg.' }
           ]
         },
+        {
+          title: 'Art Under The Rainbow: Memory Pocket of Smiles',
+          content: `The second instalment of "Art Under the Rainbow", the queer art workshop at the Rainbow Center, led by Anna Rexha and Ani Nikogosyan.
+
+The theme was "Memory Pocket of Smiles". In increasingly stressful daily lives, we sometimes forget the simple joy held in our most cherished memories. Participants took a moment to materialise them on tissue and shape them into a physical memento.
+
+Art supplies were provided, and each participant brought a piece of tissue.`,
+          img: '/memory-pocket-poster.png',
+          type: 'Workshop',
+          collection: '5 April 2025 · Rainbow Center, Luxembourg · Second instalment',
+          projects: []
+        },
       ]
     },
     'Storytelling': { 
@@ -474,16 +486,6 @@ The project grows through several forms: a book of thoughts, a digital artwork, 
       archive: `Inner-child: Anger Workshop`,
     },
     {
-      title: `KISS: Redefining the Narrative`,
-      kind: `Queer exhibition`,
-      place: `Rainbow Center, Luxembourg`,
-      start: `2026-05-01`, // set the real dates
-      end: `2026-05-31`,
-      dateLabel: `May 2026`,
-      blurb: `Five artists dismantle the heteronormative ideal of romance, exploring the kiss as an act of resistance, vulnerability and reclamation.`,
-      archive: `KISS`,
-    },
-    {
       title: `Learning Boredom`,
       kind: `Social-impact project`,
       place: `Minett region, Luxembourg`,
@@ -512,6 +514,25 @@ The project grows through several forms: a book of thoughts, a digital artwork, 
       dateLabel: `May 2025`,
       blurb: `A collaborative installation on feminism, migration and belonging, built around the concept of diffraction.`,
       archive: `DIFFRACTION`,
+    },
+    {
+      title: `Art Under The Rainbow: Memory Pocket of Smiles`,
+      kind: `Workshop`,
+      place: `Rainbow Center, Luxembourg`,
+      start: `2025-04-05`,
+      dateLabel: `5 April 2025`,
+      blurb: `The second instalment of the queer art workshop at the Rainbow Center, where participants materialised their most cherished memories on tissue.`,
+      archive: `Art Under The Rainbow: Memory Pocket of Smiles`,
+    },
+    {
+      title: `KISS: Redefining the Narrative`,
+      kind: `Queer exhibition`,
+      place: `Rainbow Center, Luxembourg`,
+      start: `2023-11-29`, // set the real dates
+      end: `2024-04-19`,
+      dateLabel: `Nov to April 2024`,
+      blurb: `Five artists dismantle the heteronormative ideal of romance, exploring the kiss as an act of resistance, vulnerability and reclamation.`,
+      archive: `KISS`,
     },
   ];
   
